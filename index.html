@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel de Suporte CEM</title>
+<meta name="description" content="Panorama executivo dos chamados de suporte da Alumisoft (CEM): KPIs, achados e gráficos interativos.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎫</text></svg>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7;
+    --surface: #fcfcfb;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #898781;
+    --grid: #e1e0d9;
+    --axis: #c3c2b7;
+    --border: rgba(11,11,11,0.10);
+    --series-1: #2a78d6;
+    --series-1-wash: rgba(42,120,214,0.12);
+    --series-1-soft: rgba(42,120,214,0.35);
+    --good: #0ca30c;
+    --warning: #fab219;
+    --serious: #ec835a;
+    --critical: #d03b3b;
+    --success-text: #006300;
+    --shadow: 0 1px 2px rgba(11,11,11,0.04), 0 6px 20px rgba(11,11,11,0.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page: #0d0d0d;
+      --surface: #1a1a19;
+      --text-primary: #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted: #898781;
+      --grid: #2c2c2a;
+      --axis: #383835;
+      --border: rgba(255,255,255,0.10);
+      --series-1: #3987e5;
+      --series-1-wash: rgba(57,135,229,0.16);
+      --series-1-soft: rgba(57,135,229,0.45);
+      --success-text: #0ca30c;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 6px 24px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted: #898781;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255,255,255,0.10);
+    --series-1: #3987e5;
+    --series-1-wash: rgba(57,135,229,0.16);
+    --series-1-soft: rgba(57,135,229,0.45);
+    --success-text: #0ca30c;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 6px 24px rgba(0,0,0,0.35);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--page);
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding: 28px 20px 60px;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+
+  h1, h2, h3, .num, .kpi-value, .stat-big {
+    font-family: 'Manrope', system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  /* ---------- header ---------- */
+  header { display: flex; flex-direction: column; gap: 6px; padding: 4px 2px 6px; }
+  .eyebrow {
+    font-size: 11.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--series-1);
+  }
+  h1 { font-size: clamp(24px, 4vw, 32px); font-weight: 800; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+  .subtitle { font-size: 14.5px; color: var(--text-secondary); max-width: 62ch; }
+  .subtitle b { color: var(--text-primary); font-weight: 600; }
+
+  /* ---------- cards ---------- */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 20px 22px 22px;
+  }
+  .card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 4px; flex-wrap: wrap; }
+  .card-title { font-size: 15.5px; font-weight: 700; margin: 0; }
+  .card-note { font-size: 12px; color: var(--text-muted); }
+  .card-desc { font-size: 12.5px; color: var(--text-secondary); margin: 2px 0 16px; max-width: 60ch; }
+
+  /* ---------- kpi row ---------- */
+  .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .kpi {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+    box-shadow: var(--shadow); padding: 16px 18px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .kpi-label { font-size: 12.5px; color: var(--text-secondary); font-weight: 500; }
+  .kpi-value { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; }
+  .kpi-caption { font-size: 11.5px; color: var(--text-muted); }
+
+  /* ---------- insights ---------- */
+  .insights-card { border-left: 3px solid var(--series-1); }
+  .insights-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+  .insights-list li { display: flex; gap: 10px; font-size: 13.5px; line-height: 1.5; color: var(--text-secondary); }
+  .insights-list li b { color: var(--text-primary); font-weight: 600; }
+  .insight-dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--series-1); margin-top: 6px; }
+  .insight-dot.warn { background: var(--warning); }
+  .insight-dot.good { background: var(--good); }
+
+  /* ---------- two-col grid ---------- */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 18px; }
+
+  /* ---------- bar rows ---------- */
+  .bars { display: flex; flex-direction: column; gap: 12px; }
+  .bar-row {
+    display: block; border-radius: 8px; padding: 3px 4px; margin: -3px -4px;
+    outline: none; cursor: default;
+  }
+  .bar-row:hover, .bar-row:focus-visible { background: var(--series-1-wash); }
+  .bar-label {
+    font-size: 12.5px; color: var(--text-secondary); margin-bottom: 5px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .bar-track-wrap { display: flex; align-items: center; gap: 10px; }
+  .bar-track { flex: 1 1 auto; height: 16px; position: relative; }
+  .bar-fill {
+    height: 100%; border-radius: 0 4px 4px 0; background: var(--series-1);
+    min-width: 3px; transition: filter 0.15s ease;
+  }
+  .bar-row:hover .bar-fill, .bar-row:focus-visible .bar-fill { filter: brightness(1.12); }
+  .bar-value {
+    flex: none; min-width: 46px; text-align: right; font-size: 13px; font-weight: 700;
+    font-variant-numeric: tabular-nums; color: var(--text-primary);
+  }
+
+  /* ---------- stacked bar (urgencia) ---------- */
+  .stack-bar { display: flex; height: 26px; border-radius: 6px; overflow: hidden; background: var(--grid); }
+  .stack-seg { height: 100%; }
+  .stack-legend { display: flex; flex-wrap: wrap; gap: 14px 22px; margin-top: 14px; }
+  .stack-item { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--text-secondary); }
+  .stack-swatch { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+  .stack-item b { color: var(--text-primary); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+  .stat-callout {
+    display: flex; align-items: center; gap: 14px; margin-top: 16px; padding: 12px 14px;
+    background: var(--page); border: 1px solid var(--border); border-radius: 10px;
+  }
+  .stat-big { font-size: 26px; font-weight: 800; color: var(--text-primary); line-height: 1; flex: none; }
+  .stat-callout p { font-size: 12.5px; color: var(--text-secondary); margin: 0; line-height: 1.45; }
+
+  /* ---------- line chart ---------- */
+  .line-chart-wrap { position: relative; }
+  svg.linechart { width: 100%; height: auto; display: block; overflow: visible; }
+  .lc-grid { stroke: var(--grid); stroke-width: 1; }
+  .lc-axis-label { fill: var(--text-muted); font-size: 10px; font-family: system-ui, sans-serif; }
+  .lc-area { fill: var(--series-1-wash); }
+  .lc-line { fill: none; stroke: var(--series-1); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .lc-line-dashed { fill: none; stroke: var(--series-1); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 3 4; }
+  .lc-dot { fill: var(--series-1); stroke: var(--surface); stroke-width: 2; }
+  .lc-dot-hollow { fill: var(--surface); stroke: var(--series-1); stroke-width: 2; }
+  .lc-crosshair { stroke: var(--axis); stroke-width: 1; opacity: 0; pointer-events: none; }
+  .lc-hit { fill: transparent; }
+  .lc-value-label { fill: var(--text-primary); font-size: 12px; font-weight: 700; font-family: 'Manrope', system-ui, sans-serif; }
+
+  /* ---------- tooltip ---------- */
+  #tooltip {
+    position: fixed; z-index: 50; pointer-events: none; opacity: 0; transition: opacity 0.08s ease;
+    background: var(--text-primary); color: var(--page); border-radius: 8px;
+    padding: 7px 10px; font-size: 12px; line-height: 1.4; max-width: 240px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+  #tooltip .tt-value { font-weight: 800; font-size: 13px; }
+  #tooltip .tt-label { opacity: 0.75; }
+
+  footer {
+    display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: space-between;
+    font-size: 11.5px; color: var(--text-muted); padding: 10px 2px 0; border-top: 1px solid var(--border); margin-top: 4px;
+  }
+
+  @media (max-width: 480px) {
+    body { padding: 20px 14px 48px; }
+    .card { padding: 16px 16px 18px; }
+    .kpi-value { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Alumisoft · Suporte CEM</div>
+    <h1>Painel de Chamados de Suporte</h1>
+    <div class="subtitle">
+      Panorama de <b>09/06/2026 a 09/09/2026</b> (93 dias) — construído direto a partir da base de tickets,
+      sem Power BI, para leitura e atualização rápida.
+    </div>
+  </header>
+
+  <section class="kpi-row" id="kpiRow"></section>
+
+  <section class="card insights-card">
+    <div class="card-head"><h2 class="card-title">Principais achados</h2></div>
+    <ul class="insights-list" id="insightsList"></ul>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <h3 class="card-title">Volume de chamados por semana</h3>
+      <span class="card-note">semana começando na data indicada</span>
+    </div>
+    <div class="line-chart-wrap">
+      <svg class="linechart" id="lineChart" viewBox="0 0 960 300" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <div class="card-head"><h3 class="card-title">Categorias de chamado</h3></div>
+      <p class="card-desc">Quase metade do volume é dúvida de uso — forte indício de espaço para autoatendimento / base de conhecimento.</p>
+      <div class="bars" id="barCategorias"></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3 class="card-title">Carga por responsável</h3></div>
+      <p class="card-desc">Chamados atendidos por pessoa no período (top 8).</p>
+      <div class="bars" id="barResponsaveis"></div>
+    </div>
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <div class="card-head"><h3 class="card-title">Ritmo por dia da semana</h3></div>
+      <p class="card-desc">Operação concentrada em dias úteis.</p>
+      <div class="bars" id="barDias"></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3 class="card-title">Urgência declarada</h3></div>
+      <p class="card-desc">Distribuição dos chamados por nível de urgência informado na abertura.</p>
+      <div class="stack-bar" id="stackUrgencia"></div>
+      <div class="stack-legend" id="stackLegend"></div>
+      <div class="stat-callout">
+        <div class="stat-big" id="urgAltaPct">—</div>
+        <p>dos chamados chegam marcados como <b>Alta</b> urgência — sinal de que o campo está mal calibrado e vale revisar o critério de triagem com a equipe.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <div class="card-head"><h3 class="card-title">Concentração de clientes</h3></div>
+      <p class="card-desc">Top 12 organizações por volume de chamados (Alumisoft, uso interno, excluída).</p>
+      <div class="bars" id="barClientes"></div>
+      <div class="stat-callout">
+        <div class="stat-big" id="top10Pct">—</div>
+        <p>dos chamados vêm dos 10 maiores clientes, de um total de <b id="nOrgs">—</b> organizações atendidas — carteira bem pulverizada, baixo risco de dependência de poucos clientes.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3 class="card-title">Perfil da carteira</h3></div>
+      <p class="card-desc">Classificação de cliente (exclui registros sem classificação).</p>
+      <div class="bars" id="barClassificacao"></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Fonte: TicketSuporteCem.xlsx · pipeline em Python/pandas (scripts 01–06)</span>
+    <span>Painel gerado em 10/09/2026</span>
+  </footer>
+
+</div>
+
+<div id="tooltip"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  var DATA = {
+    resumo: {
+      total_tickets: 4812, periodo_ini: "09/06/2026", periodo_fim: "09/09/2026",
+      dias_periodo: 93, media_dia: 51.7, n_organizacoes: 802,
+      pct_top10_clientes: 10.6, pct_urgencia_alta: 83.9, pct_duvidas: 48.4
+    },
+    volume_semanal: [
+      {semana:"08/06", qtd:308}, {semana:"15/06", qtd:327}, {semana:"22/06", qtd:333},
+      {semana:"29/06", qtd:341}, {semana:"06/07", qtd:322}, {semana:"13/07", qtd:396},
+      {semana:"20/07", qtd:361}, {semana:"27/07", qtd:336}, {semana:"03/08", qtd:356},
+      {semana:"10/08", qtd:421}, {semana:"17/08", qtd:423}, {semana:"24/08", qtd:402},
+      {semana:"31/08", qtd:358}, {semana:"07/09", qtd:128}
+    ],
+    categorias: [
+      {categoria:"Dúvidas", qtd:2331}, {categoria:"Tickets Offline", qtd:467},
+      {categoria:"Chat Inativo", qtd:448}, {categoria:"Instalação", qtd:403},
+      {categoria:"Transferência de Departamento", qtd:365}, {categoria:"Atualização Versão e Build", qtd:228},
+      {categoria:"Erros", qtd:222}, {categoria:"Nuvem Cloud", qtd:190},
+      {categoria:"Implantação", qtd:122}, {categoria:"Melhorias", qtd:27}
+    ],
+    responsaveis: [
+      {nome:"Patrick Nascimento", qtd:799}, {nome:"Daniel Joaquim", qtd:760},
+      {nome:"Giovana de Miranda", qtd:751}, {nome:"Gabriel Campos", qtd:659},
+      {nome:"Pedro Cavalciuk", qtd:618}, {nome:"Matheus Pulcinelli", qtd:481},
+      {nome:"Giulia Castanho", qtd:472}, {nome:"Ana Clara", qtd:142}
+    ],
+    dias_semana: [
+      {dia:"Segunda", qtd:904}, {dia:"Terça", qtd:1058}, {dia:"Quarta", qtd:1006},
+      {dia:"Quinta", qtd:968}, {dia:"Sexta", qtd:861}, {dia:"Sábado", qtd:10}, {dia:"Domingo", qtd:5}
+    ],
+    clientes: [
+      {organizacao:"AMAZON TEMPER", qtd:91}, {organizacao:"RD FABRICACOES", qtd:87},
+      {organizacao:"BP GLASS", qtd:70}, {organizacao:"INOVAR", qtd:41},
+      {organizacao:"ESQUADRITEMPER", qtd:36}, {organizacao:"DURANT FACHADAS E ESQUADRIAS", qtd:36},
+      {organizacao:"FORTGLASS SOLUCOES EM VIDROS E ESQUADRIAS (ANTIGA 9445)", qtd:35},
+      {organizacao:"ALLPRIME", qtd:35}, {organizacao:"ESQUADRIUM - ESQUADRIAS E VIDROS", qtd:34},
+      {organizacao:"JOIA ALUMINIO E VIDRO", qtd:33}, {organizacao:"VIDRACARIA SCHUCHARDT", qtd:33},
+      {organizacao:"VM ESQUADRIAS EM ALUMINIO", qtd:32}
+    ],
+    urgencia_geral: { "Alta": 4037, "Baixa": 489, "Média": 281, "Urgente": 3 },
+    classificacao: [
+      {classe:"Empresa", qtd:4162}, {classe:"Atendimento CEM EXCLUSIVE", qtd:138},
+      {classe:"Empresa (Onboarding)", qtd:68}, {classe:"Empresa (CEMMOBI)", qtd:31},
+      {classe:"Empresa (Cliente VIP)", qtd:16}, {classe:"Empresa (Mercosul)", qtd:11}
+    ]
+  };
+
+  function fmt(n) { return n.toLocaleString('pt-BR'); }
+  function fmt1(n) { return n.toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1}); }
+  function pct(n) { return n.toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1}) + '%'; }
+
+  var tooltip = document.getElementById('tooltip');
+  function showTooltip(x, y, valueText, labelText) {
+    tooltip.innerHTML = '';
+    var v = document.createElement('div'); v.className = 'tt-value'; v.textContent = valueText;
+    var l = document.createElement('div'); l.className = 'tt-label'; l.textContent = labelText;
+    tooltip.appendChild(v); tooltip.appendChild(l);
+    var vw = window.innerWidth;
+    var left = x + 14, top = y + 14;
+    if (left + 240 > vw) left = x - 240 - 14;
+    tooltip.style.left = left + 'px';
+    tooltip.style.top = top + 'px';
+    tooltip.style.opacity = '1';
+  }
+  function hideTooltip() { tooltip.style.opacity = '0'; }
+
+  // ---------- KPI row ----------
+  var kpis = [
+    { label: "Chamados no período", value: fmt(DATA.resumo.total_tickets), caption: DATA.resumo.periodo_ini + " – " + DATA.resumo.periodo_fim + " (" + DATA.resumo.dias_periodo + " dias)" },
+    { label: "Média de chamados por dia", value: fmt1(DATA.resumo.media_dia).replace('.', ','), caption: "considerando todos os dias do período" },
+    { label: "Organizações atendidas", value: fmt(DATA.resumo.n_organizacoes), caption: "clientes distintos com pelo menos 1 chamado" },
+    { label: "Concentração da carteira", value: pct(DATA.resumo.pct_top10_clientes).replace('.', ','), caption: "é o quanto os 10 maiores clientes representam do volume" }
+  ];
+  var kpiRow = document.getElementById('kpiRow');
+  kpis.forEach(function (k) {
+    var el = document.createElement('div'); el.className = 'kpi';
+    var l = document.createElement('div'); l.className = 'kpi-label'; l.textContent = k.label;
+    var v = document.createElement('div'); v.className = 'kpi-value'; v.textContent = k.value;
+    var c = document.createElement('div'); c.className = 'kpi-caption'; c.textContent = k.caption;
+    el.appendChild(l); el.appendChild(v); el.appendChild(c);
+    kpiRow.appendChild(el);
+  });
+
+  // ---------- Insights ----------
+  var insights = [
+    { dot: '', html: '<b>Dúvidas de uso concentram 48,4% dos chamados</b> — mais do que o dobro da 2ª categoria. Uma base de conhecimento ou fluxo de autoatendimento tende a reduzir volume mais rápido do que qualquer ganho de eficiência no atendimento.' },
+    { dot: 'warn', html: '<b>83,9% dos chamados chegam como "Alta" urgência</b>, incluindo quase todas as dúvidas simples. O campo hoje não discrimina prioridade real — vale revisar o critério de triagem na abertura do ticket.' },
+    { dot: 'good', html: '<b>Carteira de clientes bem distribuída:</b> os 10 maiores clientes somam só 10,6% do volume, entre 802 organizações atendidas. Baixo risco de depender de poucas contas.' },
+    { dot: '', html: '<b>Carga entre os 7 principais atendentes é razoavelmente equilibrada</b> (472 a 799 chamados); Ana Clara aparece bem abaixo (142), o que pode refletir entrada recente ou jornada parcial na equipe.' },
+    { dot: '', html: '<b>Operação roda em dias úteis:</b> fins de semana somam só 15 chamados no período inteiro (0,3% do total), contra média de 960/dia útil de segunda a sexta.' }
+  ];
+  var insightsList = document.getElementById('insightsList');
+  insights.forEach(function (i) {
+    var li = document.createElement('li');
+    var dot = document.createElement('span'); dot.className = 'insight-dot' + (i.dot ? ' ' + i.dot : '');
+    var span = document.createElement('span'); span.innerHTML = i.html;
+    li.appendChild(dot); li.appendChild(span);
+    insightsList.appendChild(li);
+  });
+
+  // ---------- generic bar rows ----------
+  function renderBars(containerId, items, opts) {
+    opts = opts || {};
+    var container = document.getElementById(containerId);
+    var max = Math.max.apply(null, items.map(function (d) { return d.value; }));
+    items.forEach(function (d) {
+      var row = document.createElement('div');
+      row.className = 'bar-row';
+      row.tabIndex = 0;
+      row.setAttribute('aria-label', d.label + ': ' + fmt(d.value));
+
+      var label = document.createElement('div');
+      label.className = 'bar-label';
+      label.textContent = d.label;
+      label.title = d.label;
+
+      var trackWrap = document.createElement('div');
+      trackWrap.className = 'bar-track-wrap';
+
+      var track = document.createElement('div');
+      track.className = 'bar-track';
+      var fill = document.createElement('div');
+      fill.className = 'bar-fill';
+      fill.style.width = Math.max(2, (d.value / max) * 100) + '%';
+      track.appendChild(fill);
+
+      var value = document.createElement('div');
+      value.className = 'bar-value';
+      value.textContent = fmt(d.value);
+
+      trackWrap.appendChild(track);
+      trackWrap.appendChild(value);
+      row.appendChild(label);
+      row.appendChild(trackWrap);
+      container.appendChild(row);
+
+      function onEnter(e) {
+        var pt = e.touches ? e.touches[0] : e;
+        var extra = opts.tooltipExtra ? opts.tooltipExtra(d) : '';
+        showTooltip(pt.clientX || row.getBoundingClientRect().left, pt.clientY || row.getBoundingClientRect().top, fmt(d.value) + (extra ? ' ' + extra : ''), d.label);
+      }
+      row.addEventListener('mousemove', onEnter);
+      row.addEventListener('mouseenter', onEnter);
+      row.addEventListener('mouseleave', hideTooltip);
+      row.addEventListener('focus', function () {
+        var r = row.getBoundingClientRect();
+        var extra = opts.tooltipExtra ? opts.tooltipExtra(d) : '';
+        showTooltip(r.right, r.top, fmt(d.value) + (extra ? ' ' + extra : ''), d.label);
+      });
+      row.addEventListener('blur', hideTooltip);
+    });
+  }
+
+  renderBars('barCategorias', DATA.categorias.map(function (d) { return {label: d.categoria, value: d.qtd}; }),
+    { tooltipExtra: function (d) { return '(' + pct(d.value / DATA.resumo.total_tickets * 100) + ')'; } });
+
+  renderBars('barResponsaveis', DATA.responsaveis.map(function (d) { return {label: d.nome, value: d.qtd}; }));
+
+  renderBars('barDias', DATA.dias_semana.map(function (d) { return {label: d.dia, value: d.qtd}; }));
+
+  renderBars('barClientes', DATA.clientes.map(function (d) { return {label: d.organizacao, value: d.qtd}; }));
+
+  renderBars('barClassificacao', DATA.classificacao.map(function (d) { return {label: d.classe, value: d.qtd}; }));
+
+  document.getElementById('top10Pct').textContent = pct(DATA.resumo.pct_top10_clientes).replace('.', ',');
+  document.getElementById('nOrgs').textContent = fmt(DATA.resumo.n_organizacoes);
+  document.getElementById('urgAltaPct').textContent = pct(DATA.resumo.pct_urgencia_alta).replace('.', ',');
+
+  // ---------- urgency stacked bar ----------
+  var urgOrder = [
+    { key: 'Baixa', color: 'var(--good)' },
+    { key: 'Média', color: 'var(--warning)' },
+    { key: 'Alta', color: 'var(--serious)' },
+    { key: 'Urgente', color: 'var(--critical)' }
+  ];
+  var urgTotal = Object.keys(DATA.urgencia_geral).reduce(function (a, k) { return a + DATA.urgencia_geral[k]; }, 0);
+  var stackEl = document.getElementById('stackUrgencia');
+  var legendEl = document.getElementById('stackLegend');
+  urgOrder.forEach(function (u, i) {
+    var val = DATA.urgencia_geral[u.key] || 0;
+    var widthPct = val / urgTotal * 100;
+    var seg = document.createElement('div');
+    seg.className = 'stack-seg';
+    seg.style.width = Math.max(0.6, widthPct) + '%';
+    seg.style.background = u.color;
+    if (i > 0) seg.style.marginLeft = '2px';
+    seg.tabIndex = 0;
+    seg.setAttribute('aria-label', u.key + ': ' + fmt(val));
+    var onEnter = function (e) {
+      var pt = e.touches ? e.touches[0] : e;
+      var r = seg.getBoundingClientRect();
+      showTooltip(pt.clientX || r.left, pt.clientY || r.top, fmt(val) + ' (' + pct(widthPct) + ')', u.key);
+    };
+    seg.addEventListener('mousemove', onEnter);
+    seg.addEventListener('mouseenter', onEnter);
+    seg.addEventListener('mouseleave', hideTooltip);
+    stackEl.appendChild(seg);
+
+    var item = document.createElement('div'); item.className = 'stack-item';
+    var sw = document.createElement('span'); sw.className = 'stack-swatch'; sw.style.background = u.color;
+    var txt = document.createElement('span');
+    var b = document.createElement('b'); b.textContent = fmt(val) + ' ';
+    txt.appendChild(b);
+    txt.appendChild(document.createTextNode(u.key + ' (' + pct(widthPct) + ')'));
+    item.appendChild(sw); item.appendChild(txt);
+    legendEl.appendChild(item);
+  });
+
+  // ---------- line chart ----------
+  (function () {
+    var svg = document.getElementById('lineChart');
+    var W = 960, H = 300;
+    var marginL = 40, marginR = 16, marginT = 20, marginB = 26;
+    var plotW = W - marginL - marginR, plotH = H - marginT - marginB;
+    var data = DATA.volume_semanal;
+    var n = data.length;
+    var maxVal = Math.max.apply(null, data.map(function (d) { return d.qtd; }));
+    var domainMax = Math.ceil(maxVal / 100) * 100 + 50;
+    var ticks = [0, 100, 200, 300, 400];
+
+    function x(i) { return marginL + (i / (n - 1)) * plotW; }
+    function y(v) { return marginT + plotH - (v / domainMax) * plotH; }
+
+    var ns = 'http://www.w3.org/2000/svg';
+    function el(tag, attrs) {
+      var e = document.createElementNS(ns, tag);
+      for (var k in attrs) e.setAttribute(k, attrs[k]);
+      return e;
+    }
+
+    // gridlines + y labels
+    ticks.forEach(function (t) {
+      svg.appendChild(el('line', { class: 'lc-grid', x1: marginL, x2: W - marginR, y1: y(t), y2: y(t) }));
+      var lbl = el('text', { class: 'lc-axis-label', x: marginL - 8, y: y(t) + 3, 'text-anchor': 'end' });
+      lbl.textContent = fmt(t);
+      svg.appendChild(lbl);
+    });
+
+    // x labels
+    data.forEach(function (d, i) {
+      var lbl = el('text', { class: 'lc-axis-label', x: x(i), y: H - 6, 'text-anchor': 'middle' });
+      lbl.textContent = d.semana;
+      svg.appendChild(lbl);
+    });
+
+    // area + line (solid up to n-2, dashed last segment = partial week)
+    var solidPts = data.slice(0, n - 1).map(function (d, i) { return x(i) + ',' + y(d.qtd); });
+    svg.appendChild(el('path', { class: 'lc-area', d: 'M' + x(0) + ',' + y(0) + ' L' + solidPts.join(' L') + ' L' + x(n - 1) + ',' + y(data[n-1].qtd) + ' L' + x(n - 1) + ',' + y(0) + ' L' + x(0) + ',' + y(0) + ' Z' }));
+
+    var linePath = el('path', { class: 'lc-line', d: 'M' + solidPts.join(' L') });
+    svg.appendChild(linePath);
+    var dashedPath = el('path', { class: 'lc-line-dashed', d: 'M' + x(n - 2) + ',' + y(data[n - 2].qtd) + ' L' + x(n - 1) + ',' + y(data[n - 1].qtd) });
+    svg.appendChild(dashedPath);
+
+    // peak marker + label
+    var peakIdx = data.reduce(function (best, d, i) { return d.qtd > data[best].qtd ? i : best; }, 0);
+    svg.appendChild(el('circle', { class: 'lc-dot', cx: x(peakIdx), cy: y(data[peakIdx].qtd), r: 4 }));
+    var peakLbl = el('text', { class: 'lc-value-label', x: x(peakIdx), y: y(data[peakIdx].qtd) - 12, 'text-anchor': 'middle' });
+    peakLbl.textContent = fmt(data[peakIdx].qtd);
+    svg.appendChild(peakLbl);
+
+    // first point marker
+    svg.appendChild(el('circle', { class: 'lc-dot', cx: x(0), cy: y(data[0].qtd), r: 4 }));
+
+    // last point (hollow, partial week)
+    svg.appendChild(el('circle', { class: 'lc-dot-hollow', cx: x(n - 1), cy: y(data[n - 1].qtd), r: 4 }));
+    var lastLbl = el('text', { class: 'lc-value-label', x: x(n - 1) - 4, y: y(data[n - 1].qtd) - 12, 'text-anchor': 'end' });
+    lastLbl.textContent = fmt(data[n - 1].qtd) + '*';
+    svg.appendChild(lastLbl);
+
+    var note = el('text', { class: 'lc-axis-label', x: W - marginR, y: marginT - 6, 'text-anchor': 'end' });
+    note.textContent = '* semana parcial (dados até 09/09)';
+    svg.appendChild(note);
+
+    // crosshair
+    var crosshair = el('line', { class: 'lc-crosshair', x1: 0, x2: 0, y1: marginT, y2: H - marginB });
+    svg.appendChild(crosshair);
+    var hoverDot = el('circle', { r: 5, fill: 'var(--series-1)', stroke: 'var(--surface)', 'stroke-width': 2, opacity: 0 });
+    svg.appendChild(hoverDot);
+
+    // hit areas
+    var bandW = plotW / n;
+    data.forEach(function (d, i) {
+      var hit = el('rect', {
+        class: 'lc-hit',
+        x: x(i) - bandW / 2 + (i === 0 ? bandW / 2 : 0),
+        y: marginT, width: bandW, height: plotH
+      });
+      hit.style.cursor = 'crosshair';
+      svg.appendChild(hit);
+
+      function activate(e) {
+        var pt = e.touches ? e.touches[0] : e;
+        crosshair.setAttribute('x1', x(i)); crosshair.setAttribute('x2', x(i));
+        crosshair.style.opacity = '1';
+        hoverDot.setAttribute('cx', x(i)); hoverDot.setAttribute('cy', y(d.qtd)); hoverDot.style.opacity = '1';
+        var extra = (i === n - 1) ? ' · semana parcial' : '';
+        showTooltip(pt.clientX, pt.clientY, fmt(d.qtd) + ' chamados', 'semana de ' + d.semana + extra);
+      }
+      hit.addEventListener('mousemove', activate);
+      hit.addEventListener('mouseenter', activate);
+      hit.addEventListener('mouseleave', function () {
+        crosshair.style.opacity = '0'; hoverDot.style.opacity = '0'; hideTooltip();
+      });
+    });
+  })();
+
+})();
+</script>
+</body>
+</html>

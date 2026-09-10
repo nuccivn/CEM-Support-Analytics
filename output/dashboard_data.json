@@ -1,0 +1,259 @@
+{
+  "resumo": {
+    "total_tickets": 4812,
+    "periodo_ini": "09/06/2026",
+    "periodo_fim": "09/09/2026",
+    "dias_periodo": 93,
+    "media_dia": 51.7,
+    "n_organizacoes": 802,
+    "pct_top10_clientes": 10.6,
+    "pct_urgencia_alta": 83.9,
+    "pct_duvidas": 48.4
+  },
+  "volume_semanal": [
+    {
+      "semana": "08/06",
+      "qtd": 308
+    },
+    {
+      "semana": "15/06",
+      "qtd": 327
+    },
+    {
+      "semana": "22/06",
+      "qtd": 333
+    },
+    {
+      "semana": "29/06",
+      "qtd": 341
+    },
+    {
+      "semana": "06/07",
+      "qtd": 322
+    },
+    {
+      "semana": "13/07",
+      "qtd": 396
+    },
+    {
+      "semana": "20/07",
+      "qtd": 361
+    },
+    {
+      "semana": "27/07",
+      "qtd": 336
+    },
+    {
+      "semana": "03/08",
+      "qtd": 356
+    },
+    {
+      "semana": "10/08",
+      "qtd": 421
+    },
+    {
+      "semana": "17/08",
+      "qtd": 423
+    },
+    {
+      "semana": "24/08",
+      "qtd": 402
+    },
+    {
+      "semana": "31/08",
+      "qtd": 358
+    },
+    {
+      "semana": "07/09",
+      "qtd": 128
+    }
+  ],
+  "categorias": [
+    {
+      "categoria": "Dúvidas",
+      "qtd": 2331
+    },
+    {
+      "categoria": "Tickets Offline",
+      "qtd": 467
+    },
+    {
+      "categoria": "Chat Inativo",
+      "qtd": 448
+    },
+    {
+      "categoria": "Instalação",
+      "qtd": 403
+    },
+    {
+      "categoria": "Transferência de Departamento",
+      "qtd": 365
+    },
+    {
+      "categoria": "Atualização Versão e Build",
+      "qtd": 228
+    },
+    {
+      "categoria": "Erros",
+      "qtd": 222
+    },
+    {
+      "categoria": "Nuvem Cloud",
+      "qtd": 190
+    },
+    {
+      "categoria": "Implantação",
+      "qtd": 122
+    },
+    {
+      "categoria": "Melhorias",
+      "qtd": 27
+    }
+  ],
+  "responsaveis": [
+    {
+      "nome": "Patrick Nascimento",
+      "qtd": 799
+    },
+    {
+      "nome": "Daniel Joaquim ",
+      "qtd": 760
+    },
+    {
+      "nome": "Giovana de Miranda",
+      "qtd": 751
+    },
+    {
+      "nome": "Gabriel Campos",
+      "qtd": 659
+    },
+    {
+      "nome": "Pedro Cavalciuk",
+      "qtd": 618
+    },
+    {
+      "nome": "Matheus Pulcinelli",
+      "qtd": 481
+    },
+    {
+      "nome": "Giulia Castanho",
+      "qtd": 472
+    },
+    {
+      "nome": "Ana Clara",
+      "qtd": 142
+    }
+  ],
+  "dias_semana": [
+    {
+      "dia": "Segunda",
+      "qtd": 904
+    },
+    {
+      "dia": "Terça",
+      "qtd": 1058
+    },
+    {
+      "dia": "Quarta",
+      "qtd": 1006
+    },
+    {
+      "dia": "Quinta",
+      "qtd": 968
+    },
+    {
+      "dia": "Sexta",
+      "qtd": 861
+    },
+    {
+      "dia": "Sábado",
+      "qtd": 10
+    },
+    {
+      "dia": "Domingo",
+      "qtd": 5
+    }
+  ],
+  "clientes": [
+    {
+      "organizacao": "AMAZON TEMPER",
+      "qtd": 91
+    },
+    {
+      "organizacao": "RD FABRICACOES",
+      "qtd": 87
+    },
+    {
+      "organizacao": "BP GLASS",
+      "qtd": 70
+    },
+    {
+      "organizacao": "INOVAR",
+      "qtd": 41
+    },
+    {
+      "organizacao": "ESQUADRITEMPER",
+      "qtd": 36
+    },
+    {
+      "organizacao": "DURANT FACHADAS E ESQUADRIAS",
+      "qtd": 36
+    },
+    {
+      "organizacao": "FORTGLASS SOLUCOES EM VIDROS E ESQUADRIAS (ANTIGA 9445)",
+      "qtd": 35
+    },
+    {
+      "organizacao": "ALLPRIME",
+      "qtd": 35
+    },
+    {
+      "organizacao": "ESQUADRIUM - ESQUADRIAS E VIDROS",
+      "qtd": 34
+    },
+    {
+      "organizacao": "JOIA ALUMINIO E VIDRO",
+      "qtd": 33
+    },
+    {
+      "organizacao": "VIDRACARIA SCHUCHARDT",
+      "qtd": 33
+    },
+    {
+      "organizacao": "VM ESQUADRIAS EM ALUMINIO",
+      "qtd": 32
+    }
+  ],
+  "urgencia_geral": {
+    "Alta": 4037,
+    "Baixa": 489,
+    "Média": 281,
+    "Urgente": 3
+  },
+  "classificacao": [
+    {
+      "classe": "Empresa",
+      "qtd": 4162
+    },
+    {
+      "classe": "Atendimento CEM EXCLUSIVE",
+      "qtd": 138
+    },
+    {
+      "classe": "Empresa (Onboarding)",
+      "qtd": 68
+    },
+    {
+      "classe": "Empresa (CEMMOBI)",
+      "qtd": 31
+    },
+    {
+      "classe": "Empresa (Cliente VIP)",
+      "qtd": 16
+    },
+    {
+      "classe": "Empresa (Mercosul)",
+      "qtd": 11
+    }
+  ]
+}
