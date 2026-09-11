@@ -1,20 +1,20 @@
 {
   "resumo": {
-    "total_tickets": 2025,
-    "periodo_ini": "12/08/2026",
+    "total_tickets": 2007,
+    "periodo_ini": "13/08/2026",
     "periodo_fim": "11/09/2026",
     "dias_periodo": 30,
-    "media_dia": 67.5,
-    "n_organizacoes": 541,
-    "pct_top10_clientes": 16.5,
-    "pct_urgencia_alta": 69.7,
-    "pct_duvidas": 39.5,
-    "gerado_em": "11/09/2026 14:14"
+    "media_dia": 66.9,
+    "n_organizacoes": 540,
+    "pct_top10_clientes": 16.6,
+    "pct_urgencia_alta": 69.6,
+    "pct_duvidas": 39.3,
+    "gerado_em": "11/09/2026 18:18"
   },
   "volume_semanal": [
     {
       "semana": "10/08",
-      "qtd": 224
+      "qtd": 194
     },
     {
       "semana": "17/08",
@@ -30,29 +30,29 @@
     },
     {
       "semana": "07/09",
-      "qtd": 241
+      "qtd": 253
     }
   ],
   "categorias": [
     {
       "categoria": "Dúvidas",
-      "qtd": 799
+      "qtd": 789
     },
     {
       "categoria": "Chat Inativo",
-      "qtd": 229
+      "qtd": 227
     },
     {
       "categoria": "Tickets Offline",
-      "qtd": 174
+      "qtd": 170
     },
     {
       "categoria": "Instalação",
-      "qtd": 134
+      "qtd": 132
     },
     {
       "categoria": "Transferência de Departamento",
-      "qtd": 116
+      "qtd": 117
     },
     {
       "categoria": "5. Novos Oficiais",
@@ -68,7 +68,7 @@
     },
     {
       "categoria": "Nuvem Cloud",
-      "qtd": 56
+      "qtd": 55
     },
     {
       "categoria": "Implantação",
@@ -76,7 +76,7 @@
     },
     {
       "categoria": "3. Nova Personalização",
-      "qtd": 39
+      "qtd": 38
     },
     {
       "categoria": "Aplicativos",
@@ -131,10 +131,6 @@
       "qtd": 3
     },
     {
-      "categoria": "1. Correção",
-      "qtd": 1
-    },
-    {
       "categoria": "Rede",
       "qtd": 1
     },
@@ -150,27 +146,27 @@
   "responsaveis": [
     {
       "nome": "Pedro Cavalciuk",
-      "qtd": 329
+      "qtd": 325
     },
     {
       "nome": "Giovana de Miranda",
-      "qtd": 270
+      "qtd": 266
     },
     {
       "nome": "Patrick Nascimento",
-      "qtd": 260
+      "qtd": 257
     },
     {
       "nome": "Daniel Joaquim ",
-      "qtd": 221
+      "qtd": 220
     },
     {
       "nome": "Gabriel Campos",
-      "qtd": 200
+      "qtd": 196
     },
     {
       "nome": "Matheus Pulcinelli",
-      "qtd": 196
+      "qtd": 195
     },
     {
       "nome": "Daniele Trinca",
@@ -192,7 +188,7 @@
     },
     {
       "dia": "Quarta",
-      "qtd": 392
+      "qtd": 362
     },
     {
       "dia": "Quinta",
@@ -200,7 +196,7 @@
     },
     {
       "dia": "Sexta",
-      "qtd": 379
+      "qtd": 391
     },
     {
       "dia": "Sábado",
@@ -226,19 +222,19 @@
     },
     {
       "organizacao": "AMAZON TEMPER",
-      "qtd": 23
+      "qtd": 22
     },
     {
       "organizacao": "SEM DADOS",
-      "qtd": 20
-    },
-    {
-      "organizacao": "IDEAL ESQUADRIAS DE ALUMINIO",
-      "qtd": 17
+      "qtd": 21
     },
     {
       "organizacao": "Faktory Softwares",
       "qtd": 17
+    },
+    {
+      "organizacao": "IDEAL ESQUADRIAS DE ALUMINIO",
+      "qtd": 16
     },
     {
       "organizacao": "ARTEFAL (ANTIGO 8861)",
@@ -262,14 +258,14 @@
     }
   ],
   "urgencia_geral": {
-    "Alta": 1396,
-    "Baixa": 497,
-    "Média": 111
+    "Alta": 1381,
+    "Baixa": 495,
+    "Média": 109
   },
   "classificacao": [
     {
       "classe": "Empresa",
-      "qtd": 1526
+      "qtd": 1509
     },
     {
       "classe": "Empresa (CEMMOBI)",
@@ -277,7 +273,7 @@
     },
     {
       "classe": "Empresa (Onboarding)",
-      "qtd": 53
+      "qtd": 54
     },
     {
       "classe": "Atendimento CEM EXCLUSIVE",

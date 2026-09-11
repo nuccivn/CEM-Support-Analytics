@@ -1,34 +1,4 @@
 ﻿Número,Tipo,Assunto,Aberto em,Responsável,Categoria,Urgência,Status,Organização,Contato,Classificação Cliente,Dia da Semana,Ano-Mês,Semana
-60041,Público,Cadastro de usuário no sistema,2026-08-12 14:18:24.629849100,Patrick Nascimento,Dúvidas,Alta,Resolvido,GRUPO VAX (ANTIGO 6687),ESQUADRIAS IANE,Não classificado,Quarta,2026-08,33
-60042,Público,Chat inativo,2026-08-12 14:19:08.845527800,Gabriel Campos,Chat Inativo,Baixa,Resolvido,G4 ESQUADRIAS E FACHADAS,Bruno Lima,Empresa,Quarta,2026-08,33
-60043,Público,Agendamento de atendimento ao cliente ,2026-08-12 14:19:16.969245700,Gabriel Campos,Dúvidas,Alta,Resolvido,GRUPO METAL CORES,Yasmin Carvalho,Empresa,Quarta,2026-08,33
-60044,Público,atualização de versão (3.5.24.0804 para 3.6.26.0723) + atualização de material MOF,2026-08-12 14:25:19.563542800,Patrick Nascimento,Atualização Versão e Build,Alta,Resolvido,DIVIBOX SAO GABRIEL,Juliana de Souza Pinto | Vendas Divibox,Empresa,Quarta,2026-08,33
-60046,Público,Personalização de relatório feito pelo suporte,2026-08-12 14:44:59.667074100,Giovana de Miranda,Dúvidas,Alta,Resolvido,JOIA ALUMINIO E VIDRO,Melissa Marôcco,Empresa,Quarta,2026-08,33
-60047,Público,Wania - WANIA LIDIANE PEREIRA,2026-08-12 14:53:09.942994600,Matheus Pulcinelli,Dúvidas,Alta,Resolvido,WANIA LIDIANE PEREIRA,Wania,Não classificado,Quarta,2026-08,33
-60048,Público,duvida referente a mensagem de erro ao exportar para o faktory,2026-08-12 14:56:46.154545300,Patrick Nascimento,Dúvidas,Alta,Resolvido,VIDRATTA,Felipe Abreu,Empresa,Quarta,2026-08,33
-60049,Público,Dúvida na importação de cadastro + chat inativo,2026-08-12 14:59:02.933883900,Daniel Joaquim ,Dúvidas,Alta,Resolvido,LAGER ESQUADRIAS,Márcia Christ,Empresa,Quarta,2026-08,33
-60051,Público,Erro de cálculo,2026-08-12 15:16:50.705972900,Daniel Joaquim ,Dúvidas,Alta,Resolvido,RD FABRICACOES,Sá - RD,Empresa,Quarta,2026-08,33
-60052,Público,Dúvida referente à calculo de itens + chat inativo,2026-08-12 15:35:13.996058000,Giovana de Miranda,Dúvidas,Alta,Resolvido,AMAZON TEMPER,Vivi,Não classificado,Quarta,2026-08,33
-60053,Público,Auto resolução,2026-08-12 15:40:25.918045500,Patrick Nascimento,Chat Inativo,Baixa,Resolvido,SUPER VETRO - QUALIDADE SUPERIOR EM VIDROS,Samuel Thomas,Empresa,Quarta,2026-08,33
-60054,Público,Dúvida referente a importar projeto,2026-08-12 15:44:13.811440500,Giovana de Miranda,Dúvidas,Alta,Resolvido,FINNEZE ALUMINIO,Tone Filho,Empresa,Quarta,2026-08,33
-60055,Interno,Edição de Relatórios,2026-08-12 15:46:19.925064400,Ricardo Camargo,1. Correção,Baixa,Resolvido,FEDERAL BOX & VIDROS,Hillary,Empresa,Quarta,2026-08,33
-60056,Público,Dúvida em como funciona a impressora universal + chat inativo,2026-08-12 15:48:28.410388500,Daniel Joaquim ,Nuvem Cloud,Alta,Resolvido,STAL ESQUADRIAS,Robson Ganzella,Empresa,Quarta,2026-08,33
-60057,Interno,PR: Ajustes de Relatório (Fora de processo - PSTL),2026-08-12 15:58:50.056703900,Ricardo Camargo,3. Nova Personalização,Média,Resolvido,INOVAR,,Não classificado,Quarta,2026-08,33
-60058,Público,Instalação de atalho em rede (mapeamento),2026-08-12 16:00:24.751805900,Patrick Nascimento,Instalação,Alta,Resolvido,ALUTECH ESQUADRIAS DE ALUMINIO,Lippa,Empresa,Quarta,2026-08,33
-60059,Público,Dúvida referente a cadastro de vidro,2026-08-12 16:01:10.344451600,Giovana de Miranda,Dúvidas,Alta,Resolvido,G4 ESQUADRIAS E FACHADAS,Wandson Oliveira,Empresa,Quarta,2026-08,33
-60061,Público,Atualização de build 0414 > 0723 + atualização de material MOF (OlgaColor),2026-08-12 16:03:04.838140800,Daniel Joaquim ,Dúvidas,Alta,Resolvido,ALUMIPRATA (ANTIGO 705),Alumiprata,Empresa,Quarta,2026-08,33
-60062,Público,Dúvida referente a existência de material MOF,2026-08-12 16:16:15.386012900,Gabriel Campos,Dúvidas,Alta,Resolvido,IDEAL ESQUADRIAS DE ALUMINIO,IDEAL ESQUADRIAS,Empresa,Quarta,2026-08,33
-60063,Público,Agendamento de atualização de material ,2026-08-12 16:17:29.593261300,Gabriel Campos,Dúvidas,Alta,Resolvido,ARTEFAL (ANTIGO 8861),Ewerton,Empresa,Quarta,2026-08,33
-60064,Público,Duvida referente a cadastro de vidros ,2026-08-12 16:23:04.725726300,Matheus Pulcinelli,Dúvidas,Alta,Resolvido,CRISTAL VIDROS CHAPADA,Marco,Empresa,Quarta,2026-08,33
-60065,Público,duvida referente ao usuário e senha do EGCLOUD,2026-08-12 16:23:50.165023500,Patrick Nascimento,Nuvem Cloud,Alta,Resolvido,ALUF,ALUF SERRALHERIA- ORÇAMENTOS,Empresa,Quarta,2026-08,33
-60066,Público,Agendamento de atendimento ao cliente,2026-08-12 16:25:08.357287800,Giovana de Miranda,Instalação,Alta,Resolvido,CAMPOS ALTOS ESQUADRIAS,Estéfane Souza,Empresa,Quarta,2026-08,33
-60067,Público,Agendamento de atualização de material Alushow,2026-08-12 16:32:04.007310000,Giovana de Miranda,Dúvidas,Alta,Resolvido,CARVALHO & CARVALHO,Lucas,Empresa,Quarta,2026-08,33
-60068,Público,Agendamento de atualização de build,2026-08-12 16:32:19.364656000,Giovana de Miranda,Dúvidas,Alta,Resolvido,PACHELE,Luis,Empresa,Quarta,2026-08,33
-60069,Público,Duvidas referente a localizar linhas da DECAMP,2026-08-12 16:41:35.775579700,Davi Barros,Dúvidas,Média,Resolvido,PRELAR ESPECIALISTA EM ESQUADRIAS,Rayane,Empresa,Quarta,2026-08,33
-60070,Público,Offline message - Kellen,2026-08-12 16:55:58.764442700,Pedro Cavalciuk,Tickets Offline,Alta,Resolvido,BRWINDOW,Kellen,Empresa,Quarta,2026-08,33
-60071,Público,Offline message - Alyne,2026-08-12 16:57:01.575382000,Pedro Cavalciuk,Tickets Offline,Alta,Resolvido,CENTRO DO ALUMINIO,Alyne,Empresa,Quarta,2026-08,33
-60072,Público,Offline message - Robson Ganzella,2026-08-12 17:06:00.168224100,Pedro Cavalciuk,Tickets Offline,Alta,Resolvido,STAL ESQUADRIAS,Robson Ganzella,Empresa,Quarta,2026-08,33
-60073,Público,Offline message - Rodrigo Silva,2026-08-12 17:58:41.894784700,Pedro Cavalciuk,Tickets Offline,Alta,Resolvido,SARAIVA VIDROS E ESQUADRIAS(DIMIFAL),Rodrigo Silva,Empresa,Quarta,2026-08,33
 60075,Público,Offline message - IDEAL ESQUADRIAS,2026-08-13 07:18:21.056916500,Pedro Cavalciuk,Tickets Offline,Alta,Resolvido,IDEAL ESQUADRIAS DE ALUMINIO,IDEAL ESQUADRIAS,Empresa,Quinta,2026-08,33
 60076,Público,Offline message - Estéfane Souza,2026-08-13 07:43:38.809416800,Pedro Cavalciuk,Tickets Offline,Alta,Resolvido,CAMPOS ALTOS ESQUADRIAS,Estéfane Souza,Empresa,Quinta,2026-08,33
 60077,Público,Erro de tela sobreposta,2026-08-13 08:03:14.785641400,Gabriel Campos,Erros,Alta,Resolvido,BRWINDOW,Kellen,Empresa,Quinta,2026-08,33
@@ -1392,7 +1362,7 @@
 61522,Público,duvida referente a reinstalação do sistema provisoriamente ,2026-08-31 14:58:23.017487500,Patrick Nascimento,Dúvidas,Baixa,Resolvido,ALUTEK ALUMINIO,Raphael Alves,Empresa,Segunda,2026-08,36
 61523,Público,Analise servidor Faktory - 7001,2026-08-31 15:02:07.943149200,Daniele Trinca,Servidores,Alta,Resolvido,Alumisoft Sistemas,Rodrigo Santos,Empresa,Segunda,2026-08,36
 61524,Público,Dúvida referente a cadastrar modelo 3d,2026-08-31 15:02:36.905443900,Giovana de Miranda,Dúvidas,Alta,Resolvido,BP GLASS,⠀,Empresa,Segunda,2026-08,36
-61525,Público,Envio de arquivo e logotipo - Proposta Comercial CEM,2026-08-31 15:03:43.557682900,Vinicius Nucci,3. Nova Personalização,Baixa,Em atendimento,VETRA PRIME ESQUADRIAS ( ANTIGO 13700),priscila@vetraprimesquadrias.com.br,Não classificado,Segunda,2026-08,36
+61525,Interno,Envio de arquivo e logotipo - Proposta Comercial CEM,2026-08-31 15:03:43.557682900,Vinicius Nucci,3. Nova Personalização,Baixa,Resolvido,VETRA PRIME ESQUADRIAS ( ANTIGO 13700),priscila@vetraprimesquadrias.com.br,Não classificado,Segunda,2026-08,36
 61526,Público,Duvida referente a salvar como,2026-08-31 15:04:19.141097400,Matheus Pulcinelli,Dúvidas,Alta,Resolvido,GUILES ESQUADRIAS,Joyce Gomes,Empresa,Segunda,2026-08,36
 61528,Público,Dúvida referente a cadastro de vidros + chat inativo,2026-08-31 15:10:52.446169000,Giovana de Miranda,Dúvidas,Alta,Resolvido,ALUTEC DF,Jão📊🧑🏻‍💻,Empresa,Segunda,2026-08,36
 61529,Público,Transferência de departamento - Financeiro,2026-08-31 15:11:29.457230800,Daniel Joaquim ,Transferência de Departamento,Alta,Resolvido,ART DESING ALUMINIO,Art Design Esquadrias,Empresa,Segunda,2026-08,36
@@ -1430,7 +1400,7 @@
 61563,Público,Dúvida referente a listagem de itens no relatorio,2026-08-31 16:48:58.823594000,Giovana de Miranda,Dúvidas,Alta,Resolvido,ARTEFAL (ANTIGO 8861),Ewerton,Empresa,Segunda,2026-08,36
 61564,Público,Dúvida em como voltar backup,2026-08-31 16:49:09.464150400,Daniel Joaquim ,Dúvidas,Alta,Resolvido,LINO & LINO INSTALACAO (ANTIGO 636),.,Empresa,Segunda,2026-08,36
 61565,Público,Dúvida referente a manutenção de itens,2026-08-31 16:52:44.839164600,Giovana de Miranda,Dúvidas,Alta,Resolvido,METASUL ESQUADRIAS DE ALUMINIO,DINIS,Empresa,Segunda,2026-08,36
-61566,Público,DESENVOLVIMENTO DE RELATÓRIO DALUMINIUM,2026-08-31 17:03:40.312980400,Ricardo Camargo,"7. Dúvidas, Desistência ou Transf. Depto.",Média,Personalização de Relatórios,SOLUTION SOLUCOES EM ESQUADRIAS DE ALUMINIO,NIKOLY,Empresa,Segunda,2026-08,36
+61566,Público,DESENVOLVIMENTO DE RELATÓRIO DALUMINIUM,2026-08-31 17:03:40.312980400,Giovana de Miranda,"7. Dúvidas, Desistência ou Transf. Depto.",Média,Personalização de Relatórios,SOLUTION SOLUCOES EM ESQUADRIAS DE ALUMINIO,NIKOLY,Empresa,Segunda,2026-08,36
 61567,Público,Offline message ,2026-08-31 17:04:38.183194200,Davi Barros,Tickets Offline,Média,Resolvido,UNIQUE,Jonatas Mendes,Empresa,Segunda,2026-08,36
 61568,Público,Offline message - Raphael Alves,2026-08-31 17:06:50.420769000,Davi Barros,Tickets Offline,Baixa,Resolvido,ALUTEK ALUMINIO,Raphael Alves,Empresa,Segunda,2026-08,36
 61570,Público,"MOF — Scripts SQL para execução no HML (sqldb-mof-hml-002) — 6 arquivos, 7 passos",2026-08-31 17:59:41.754079900,Daniele Trinca,Banco de Dados,Alta,Resolvido,Faktory Softwares,Rodrigo Moreira - Faktory,Empresa,Segunda,2026-08,36
@@ -2022,5 +1992,17 @@
 62191,Público,Desenhador não funciona,2026-09-11 13:15:43.525479900,Pedro Cavalciuk,Dúvidas,Alta,Resolvido,ESQUADRIFOUR ESQUADRIAS,Vinicius Dubiella,Empresa,Sexta,2026-09,37
 62192,Público,Tranferencia de departamento - financeiro ,2026-09-11 13:38:31.577978200,Matheus Pulcinelli,Transferência de Departamento,Alta,Resolvido,FENESTRA ESQUADRIAS,FENESTRA ESQUADRIAS,Empresa,Sexta,2026-09,37
 62193,Público,Transferência de departamento - relatório ,2026-09-11 13:47:29.748033400,Matheus Pulcinelli,Transferência de Departamento,Alta,Resolvido,ALUMNIX ESQUADRIAS,Projetos - Alumnix,Empresa,Sexta,2026-09,37
+62194,Público,Dúvida na criação de regra (precificação de componentes),2026-09-11 13:47:47.115850300,Daniel Joaquim ,Dúvidas,Alta,Resolvido,LINO & LINO INSTALACAO (ANTIGO 636),.,Empresa,Sexta,2026-09,37
 62195,Público,Desenhador não funciona,2026-09-11 13:56:05.935356900,Pedro Cavalciuk,Dúvidas,Alta,Resolvido,ART DESING ALUMINIO,Art Design Esquadrias,Empresa,Sexta,2026-09,37
+62196,Público,Transferencia de departamento - relatórios personalizados + chat inativo,2026-09-11 14:07:58.240684000,Giovana de Miranda,Transferência de Departamento,Alta,Resolvido,INSTALAR VIDROS (CARVALHO VIDROS(7150)),Carlos Eduardo de Souza Vieira,Empresa,Sexta,2026-09,37
 62197,Público,CEM MOBI - Implantação - JANCORTES (13867),2026-09-11 14:12:39.769921800,,,,Novo,Alumisoft Sistemas,Implantacao,Empresa,Sexta,2026-09,37
+62198,Público,Atualização de material MOF - MERCADO,2026-09-11 14:22:21.160506700,Matheus Pulcinelli,Dúvidas,Alta,Resolvido,RD FABRICACOES,Sá - RD,Empresa,Sexta,2026-09,37
+62199,Público,duvida referente a ativação do estoque técnico ,2026-09-11 14:34:33.199380900,Patrick Nascimento,Dúvidas,Alta,Resolvido,REINSTAL,Reinstal DEPTO. TÉCNICO,Empresa,Sexta,2026-09,37
+62200,Público,Duvida referente a como mudar o status da obra para Produção,2026-09-11 14:39:29.047224200,Patrick Nascimento,Dúvidas,Alta,Resolvido,ARTEFAL (ANTIGO 8861),BRENO,Empresa,Sexta,2026-09,37
+62201,Público,Atualização de build 0723 + autenticar esquadrias,2026-09-11 14:41:47.173987600,Daniel Joaquim ,Atualização Versão e Build,Alta,Resolvido,DOMINIC ESQUADRIAS,Daiane,Empresa,Sexta,2026-09,37
+62202,Público,ALTERAÇÃO DE RELATÓRIO - ORIENTAÇÕES DE CORTES,2026-09-11 14:49:41.109646800,,,Baixa,Personalização de Relatórios,ALUMNIX ESQUADRIAS,Marcela,Empresa,Sexta,2026-09,37
+62203,Público,Thais - PRIME VIDROS E ALUMINIO (CEMWEB-IMPLANTAÇÃO),2026-09-11 14:54:56.959222000,Yasmin Oliveira,Dúvidas,Alta,Resolvido,PRIME VIDROS E ALUMINIO (CEMWEB-IMPLANTAÇÃO),Thais,Empresa (Onboarding),Sexta,2026-09,37
+62204,Público,Dúvida na existência da linha NOVY da ALUPRIME,2026-09-11 15:04:29.052154900,Daniel Joaquim ,Dúvidas,Alta,Resolvido,FRAMES  ACUSTICA,Thiago - Projetista 📝,Empresa,Sexta,2026-09,37
+62205,Público,solicitação de personalização de relatório,2026-09-11 15:46:22.272444000,Patrick Nascimento,Dúvidas,Alta,Resolvido,ESQUADRIAS FENIX,Osmar,Empresa,Sexta,2026-09,37
+62206,Público,Acesso via remote app,2026-09-11 15:54:50.577460800,Giovana de Miranda,Nuvem Cloud,Alta,Resolvido,SEM DADOS,Julio Cesar,Não classificado,Sexta,2026-09,37
+62207,Público,Offline message - Daniel,2026-09-11 16:12:08.934282800,,,,Novo,Daniel,,Não classificado,Sexta,2026-09,37

@@ -1,29 +1,28 @@
 Categoria,Pedro Cavalciuk,Giovana de Miranda,Patrick Nascimento,Daniel Joaquim ,Gabriel Campos,Matheus Pulcinelli,Daniele Trinca
-1. Correção,0,0,0,0,0,0,0
 3. Nova Personalização,0,9,0,0,2,0,0
 4. Re-personalização,0,5,0,0,0,0,0
 5. Novos Oficiais,0,0,0,0,0,0,0
 6. Melhoria Oficial,0,0,0,0,0,0,0
-"7. Dúvidas, Desistência ou Transf. Depto.",0,0,0,0,0,0,0
+"7. Dúvidas, Desistência ou Transf. Depto.",0,1,0,0,0,0,0
 Aplicativos,0,0,0,0,0,0,10
-Atualização Versão e Build,9,15,6,7,13,6,0
+Atualização Versão e Build,9,15,5,8,13,6,0
 Banco de Dados,0,0,0,0,0,0,19
-Chat Inativo,31,26,46,35,20,35,0
+Chat Inativo,31,26,45,35,19,35,0
 Cloud,0,0,0,0,0,0,7
 Documentação,0,0,0,0,0,0,1
-Dúvidas,63,140,138,114,123,90,0
+Dúvidas,63,134,139,113,120,89,0
 E-mail,0,0,0,0,0,0,14
 EGCloud,0,0,0,0,0,0,12
 Erros,11,5,19,12,20,9,0
 Hardware,0,0,0,0,0,0,3
 Implantação,11,0,6,7,0,7,8
-Instalação,25,28,20,18,11,29,0
+Instalação,25,27,19,18,11,29,0
 Internet,0,0,0,0,0,0,9
 Licenças,0,0,0,0,0,0,8
 Melhorias,2,3,0,0,0,0,0
-Nuvem Cloud,14,15,11,11,2,0,0
+Nuvem Cloud,14,16,10,10,2,0,0
 Rede,0,0,0,0,0,0,0
 Servidores,0,0,0,0,0,0,3
-Tickets Offline,149,6,1,3,0,0,0
-Transferência de Departamento,13,18,13,14,9,18,0
+Tickets Offline,145,6,1,3,0,0,0
+Transferência de Departamento,13,19,13,14,9,18,0
 Usuários,0,0,0,0,0,0,21
