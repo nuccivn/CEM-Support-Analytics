@@ -1,36 +1,29 @@
 Categoria,qtd_tickets
-Dúvidas,10601
-Transferência de Departamento,1776
-Tickets Offline,1725
-Instalação,1584
-Chat Inativo,1355
-Erros,1089
-Atualização Versão e Build,993
-Nuvem Cloud,723
-Implantação,622
-3. Nova Personalização,447
-Aplicativos,253
-EGCloud,205
-Usuários,161
-Hardware,142
-Cloud,140
-Banco de Dados,103
-5. Novos Oficiais,101
-4. Re-personalização,97
-E-mail,85
-Melhorias,79
-"7. Dúvidas, Desistência ou Transf. Depto.",70
-Internet,56
-Licenças,39
-Rede,17
-Office 365,17
-Backup,14
-Servidores,14
-1. Correção,10
-Documentação,9
-Telefonia,8
-6. Melhoria Oficial,6
-Monitoramento,5
-Sugestões,5
-2. Conversão de Versão,3
-No-Break,1
+Dúvidas,805
+Chat Inativo,230
+Tickets Offline,174
+Instalação,135
+Transferência de Departamento,115
+5. Novos Oficiais,95
+Erros,92
+Atualização Versão e Build,68
+Nuvem Cloud,56
+Implantação,42
+3. Nova Personalização,39
+Aplicativos,24
+Usuários,22
+Banco de Dados,19
+E-mail,14
+EGCloud,13
+Hardware,10
+Cloud,10
+"7. Dúvidas, Desistência ou Transf. Depto.",9
+Internet,9
+Licenças,8
+4. Re-personalização,6
+Melhorias,5
+Servidores,3
+1. Correção,1
+Rede,1
+Documentação,1
+6. Melhoria Oficial,1
