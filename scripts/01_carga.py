@@ -1,21 +1,129 @@
 """
-Aula 1 - Carga e primeira exploração dos dados de tickets de suporte.
+Aula 1 - Carga (via API do Movidesk) e primeira exploração dos dados.
 
-Objetivo: ler o Excel e responder as perguntas básicas
+Antes era: ler o Excel exportado manualmente.
+Agora: busca os tickets direto na API do Movidesk e monta o mesmo
+formato de tabela que o Excel tinha, para o resto do pipeline (02 em
+diante) não precisar mudar nada.
+
+Configuração necessária (uma vez só): copie .env.example para .env e
+cole o token da API do Movidesk. Veja o README.md para o passo a passo
+de onde encontrar esse token.
+
+Objetivo (igual antes):
 - quantas linhas/colunas?
 - quais tipos de dado em cada coluna?
 - quantos valores nulos (faltantes)?
 - qual o período coberto?
 """
 
+import os
+from datetime import datetime, timedelta, timezone
+
 import pandas as pd
+from dotenv import load_dotenv
 
-CAMINHO_ARQUIVO = "data/TicketSuporteCem.xlsx"
+import movidesk_client as movidesk
 
-# read_excel devolve um DataFrame: uma tabela com linhas e colunas, indexada por posição
-df = pd.read_excel(CAMINHO_ARQUIVO)
+load_dotenv()
+
+ARQUIVO_CACHE = "data/tickets_movidesk_raw.csv"
+
+# Janela de datas: fixe MOVIDESK_DATA_INICIO / MOVIDESK_DATA_FIM (formato
+# YYYY-MM-DD) no .env para reproduzir um período específico. Sem isso, o
+# padrão é "últimos 90 dias", que é o limite da rota /tickets (tickets mais
+# antigos exigem /tickets/past - ver movidesk_client.py).
+_data_fim_env = os.environ.get("MOVIDESK_DATA_FIM")
+_data_inicio_env = os.environ.get("MOVIDESK_DATA_INICIO")
+data_fim = datetime.fromisoformat(_data_fim_env) if _data_fim_env else datetime.now(timezone.utc)
+data_inicio = (
+    datetime.fromisoformat(_data_inicio_env) if _data_inicio_env else data_fim - timedelta(days=90)
+)
+
+# A rota /tickets só devolve tickets com lastUpdate < 90 dias (ver
+# movidesk_client.py). Um ticket criado antes disso só volta se também
+# tiver sido atualizado recentemente - senão some da consulta sem erro
+# nenhum. Se a janela pedida for mais antiga que isso, avisamos.
+_limite_lastupdate = datetime.now(timezone.utc) - timedelta(days=90)
+if data_inicio.replace(tzinfo=data_inicio.tzinfo or timezone.utc) < _limite_lastupdate:
+    print(
+        "AVISO: data_inicio é anterior a 90 dias atrás. A rota /tickets só "
+        "retorna tickets com lastUpdate recente — tickets antigos e sem "
+        "atividade nesse período podem faltar nesta carga. Para um "
+        "backfill completo, use a rota /tickets/past."
+    )
 
 print("=" * 60)
+print("BUSCANDO TICKETS NA API DO MOVIDESK")
+print("=" * 60)
+print(f"Período (createdDate): {data_inicio:%Y-%m-%d} até {data_fim:%Y-%m-%d}")
+
+tickets = movidesk.buscar_tickets(data_inicio, data_fim)
+print(f"\nTotal de tickets recebidos: {len(tickets)}")
+
+print("\nBuscando classificação das organizações (para 'Cliente: Classificação')...")
+classificacao_por_org = movidesk.buscar_classificacao_organizacoes()
+print(f"Organizações carregadas: {len(classificacao_por_org)}")
+
+MAPA_TIPO = {1: "Interno", 2: "Público"}
+
+
+def montar_cliente_completo(ticket):
+    clientes = ticket.get("clients") or []
+    if not clientes:
+        return pd.NA
+    cliente = clientes[0]
+    org = cliente.get("organization")
+    if org and org.get("businessName"):
+        return f"{org['businessName']} » {cliente.get('businessName', '')}"
+    return cliente.get("businessName")
+
+
+def montar_classificacao(ticket):
+    clientes = ticket.get("clients") or []
+    if not clientes:
+        return pd.NA
+    org = clientes[0].get("organization")
+    if not org:
+        return pd.NA
+    return classificacao_por_org.get(org.get("id"))
+
+
+linhas = []
+for t in tickets:
+    linhas.append(
+        {
+            "Número": t.get("id"),
+            "Tipo": MAPA_TIPO.get(t.get("type")),
+            "Assunto": t.get("subject"),
+            "Aberto em": t.get("createdDate"),
+            "Cliente (Completo)": montar_cliente_completo(t),
+            "Responsável": (t.get("owner") or {}).get("businessName"),
+            "Categoria": t.get("category"),
+            "Urgência": t.get("urgency"),
+            "Status": t.get("status"),
+            "Justificativa": t.get("justification"),
+            "Cliente: Classificação (Organização)": montar_classificacao(t),
+            "Serviço (2º Nível)": t.get("serviceSecondLevel"),
+        }
+    )
+
+df = pd.DataFrame(linhas)
+
+# createdDate vem em UTC da API; convertemos para o horário de Brasília
+# (fuso em que os tickets de fato são abertos) e descartamos o timezone
+# para manter o mesmo formato "ingênuo" que o Excel tinha.
+df["Aberto em"] = (
+    pd.to_datetime(df["Aberto em"], utc=True)
+    .dt.tz_convert("America/Sao_Paulo")
+    .dt.tz_localize(None)
+)
+
+os.makedirs("data", exist_ok=True)
+df.to_csv(ARQUIVO_CACHE, index=False, encoding="utf-8-sig")
+print(f"\nCache salvo em {ARQUIVO_CACHE} — as próximas etapas (02 em diante) leem daqui.")
+
+print("\n" + "=" * 60)
 print("DIMENSÕES DO DATASET")
 print("=" * 60)
 print(f"Linhas (tickets): {df.shape[0]}")

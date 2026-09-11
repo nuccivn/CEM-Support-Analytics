@@ -9,11 +9,15 @@ O que fazemos aqui:
 
 O resultado é salvo em output/tickets_limpos.csv, que vai virar a base
 de todas as próximas aulas (e também poderá alimentar o Power BI depois).
+
+Fonte dos dados: data/tickets_movidesk_raw.csv, gerado pela etapa 01
+(que busca os tickets direto na API do Movidesk). Rode 01_carga.py antes
+deste script sempre que quiser dados atualizados.
 """
 
 import pandas as pd
 
-df = pd.read_excel("data/TicketSuporteCem.xlsx")
+df = pd.read_csv("data/tickets_movidesk_raw.csv", parse_dates=["Aberto em"])
 
 # 1) Descarta colunas sem informação útil
 #    - Serviço (2º Nível): valor único em todas as linhas
