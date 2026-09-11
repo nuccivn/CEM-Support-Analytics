@@ -195,17 +195,45 @@
     .card { padding: 16px 16px 18px; }
     .kpi-value { font-size: 26px; }
   }
+
+  /* ---------- overlay de atualização ---------- */
+  #loadingOverlay {
+    position: fixed; inset: 0; z-index: 100; background: var(--page);
+    display: flex; align-items: center; justify-content: center; padding: 24px;
+  }
+  .loading-box { max-width: 360px; text-align: center; }
+  .spinner {
+    width: 32px; height: 32px; margin: 0 auto 18px; border-radius: 50%;
+    border: 3px solid var(--border); border-top-color: var(--series-1);
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-box p { margin: 0 0 6px; color: var(--text-primary); font-size: 15px; font-weight: 600; }
+  .loading-box .loading-sub { color: var(--text-muted); font-size: 12.5px; font-weight: 500; }
+  .loading-box .loading-error { color: var(--critical); }
+  .loading-box button {
+    margin-top: 16px; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--surface); color: var(--text-primary); font: inherit; font-weight: 700; cursor: pointer;
+  }
 </style>
 </head>
 <body>
+
+<div id="loadingOverlay">
+  <div class="loading-box">
+    <div class="spinner" aria-hidden="true"></div>
+    <p id="loadingText">Buscando os tickets mais recentes na Movidesk…</p>
+    <p class="loading-sub" id="loadingSub">Isso pode levar alguns minutos (a API tem limite de requisições).</p>
+  </div>
+</div>
 
 <div class="wrap">
 
   <header>
     <div class="eyebrow">Alumisoft · Suporte CEM</div>
     <h1>Painel de Chamados de Suporte</h1>
-    <div class="subtitle">
-      Panorama de <b>09/06/2026 a 09/09/2026</b> (93 dias) — construído direto a partir da base de tickets,
+    <div class="subtitle" id="subtitle">
+      Panorama de <b id="subtitlePeriodo">—</b> — construído direto a partir da base de tickets,
       sem Power BI, para leitura e atualização rápida.
     </div>
   </header>
@@ -288,21 +316,138 @@
 (function () {
   "use strict";
 
-  // Os dados não ficam mais fixos aqui: são gerados pelo pipeline
-  // (scripts 01-06) em output/dashboard_data.json e buscados a cada
-  // carregamento da página, para o painel refletir a última atualização
-  // automática (ver .github/workflows/atualizar-dados.yml).
-  fetch('output/dashboard_data.json')
-    .then(function (r) { return r.json(); })
-    .then(renderDashboard)
-    .catch(function (err) {
-      document.body.innerHTML =
-        '<p style="padding:40px;font-family:sans-serif">Não foi possível carregar output/dashboard_data.json: ' +
-        err + '</p>';
-    });
+  // Cada carregamento da página dispara uma busca nova na API da Movidesk
+  // (via GitHub Actions - ver api/refresh.js e
+  // .github/workflows/atualizar-dados.yml) e só desenha o painel quando o
+  // pipeline terminar. Os dados nunca ficam fixos aqui no HTML.
+  var overlay = document.getElementById('loadingOverlay');
+  var loadingText = document.getElementById('loadingText');
+  var loadingSub = document.getElementById('loadingSub');
 
-  function renderDashboard(DATA) {
+  var POLL_STATUS_MS = 5000;
+  var TIMEOUT_STATUS_MS = 6 * 60 * 1000; // 6 min
+  var POLL_JSON_MS = 4000;
+  var TENTATIVAS_JSON = 15;
+
+  function setLoading(texto, sub) {
+    loadingText.textContent = texto;
+    loadingText.classList.remove('loading-error');
+    if (sub !== undefined) loadingSub.textContent = sub;
+  }
+
+  function setErro(texto, sub) {
+    loadingText.textContent = texto;
+    loadingText.classList.add('loading-error');
+    if (sub !== undefined) loadingSub.textContent = sub;
+  }
+
+  function buscarJSON(url, opts) {
+    return fetch(url, opts).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status + ' em ' + url);
+      return r.json();
+    });
+  }
+
+  function buscarDadosAtuais() {
+    return buscarJSON('output/dashboard_data.json?t=' + Date.now());
+  }
+
+  function dormir(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  function esperarWorkflow(runId) {
+    var inicio = Date.now();
+    var url = 'api/refresh-status' + (runId ? ('?run_id=' + runId) : '');
+    return (function tentar() {
+      return buscarJSON(url).then(function (s) {
+        if (s.status === 'completed') return s;
+        if (Date.now() - inicio > TIMEOUT_STATUS_MS) {
+          throw new Error('A atualização está demorando mais que o esperado.');
+        }
+        return dormir(POLL_STATUS_MS).then(tentar);
+      });
+    })();
+  }
+
+  function esperarJsonNovo(geradoEmAntigo) {
+    var tentativa = 0;
+    return (function tentar() {
+      tentativa++;
+      return buscarDadosAtuais().then(function (data) {
+        var mudou = !geradoEmAntigo || data.resumo.gerado_em !== geradoEmAntigo;
+        if (mudou || tentativa >= TENTATIVAS_JSON) return data;
+        return dormir(POLL_JSON_MS).then(tentar);
+      });
+    })();
+  }
+
+  function iniciar() {
+    setLoading('Verificando dados atuais…');
+    var geradoEmAntigo = null;
+
+    buscarDadosAtuais()
+      .catch(function () { return null; }) // primeira visita: ainda não existe cache
+      .then(function (atual) {
+        if (atual) geradoEmAntigo = atual.resumo.gerado_em;
+
+        setLoading(
+          'Buscando os tickets mais recentes na Movidesk…',
+          'Isso pode levar alguns minutos (a API tem limite de requisições).'
+        );
+        return buscarJSON('api/refresh', { method: 'POST' });
+      })
+      .then(function (r) {
+        if (r.status === 'already_running') {
+          setLoading('Já tem uma atualização em andamento, acompanhando…');
+        }
+        return esperarWorkflow(r.run_id);
+      })
+      .then(function (s) {
+        if (s.conclusion !== 'success') {
+          throw new Error('O pipeline rodou mas terminou com falha (' + s.conclusion + ').');
+        }
+        setLoading('Atualização concluída, carregando o painel…');
+        return esperarJsonNovo(geradoEmAntigo);
+      })
+      .then(function (data) {
+        overlay.hidden = true;
+        renderDashboard(data);
+      })
+      .catch(function (err) {
+        // Não trava a página numa tela de erro: mostra o último dado
+        // disponível (se existir), mas deixa claro que não é o dado fresco.
+        buscarDadosAtuais()
+          .then(function (data) {
+            overlay.hidden = true;
+            renderDashboard(data, {
+              avisoDesatualizado: String(err && err.message ? err.message : err),
+            });
+          })
+          .catch(function () {
+            setErro(
+              'Não foi possível atualizar nem carregar dados existentes.',
+              String(err && err.message ? err.message : err)
+            );
+          });
+      });
+  }
+
+  iniciar();
+
+  function renderDashboard(DATA, opts) {
     document.getElementById('footerData').textContent = 'Painel atualizado em ' + DATA.resumo.gerado_em;
+    document.getElementById('subtitlePeriodo').textContent =
+      DATA.resumo.periodo_ini + ' a ' + DATA.resumo.periodo_fim + ' (' + DATA.resumo.dias_periodo + ' dias)';
+
+    if (opts && opts.avisoDesatualizado) {
+      var aviso = document.createElement('div');
+      aviso.style.cssText =
+        'background:var(--warning);color:#1a1400;padding:10px 14px;border-radius:8px;' +
+        'font-size:12.5px;font-weight:700;margin-bottom:16px;';
+      aviso.textContent =
+        'Não foi possível concluir uma nova atualização agora — exibindo os últimos dados ' +
+        'disponíveis (' + opts.avisoDesatualizado + ').';
+      document.querySelector('.wrap').prepend(aviso);
+    }
 
   function fmt(n) { return n.toLocaleString('pt-BR'); }
   function fmt1(n) { return n.toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1}); }

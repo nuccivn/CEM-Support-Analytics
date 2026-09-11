@@ -2,9 +2,19 @@ name: Atualizar dados do painel
 
 on:
   schedule:
-    # 07:00 America/Sao_Paulo (UTC-3), todo dia
+    # 07:00 America/Sao_Paulo (UTC-3), todo dia - fallback caso ninguém
+    # abra o painel por um tempo (o normal é o próprio painel disparar
+    # isso via api/refresh.js a cada carregamento de página).
     - cron: "0 10 * * *"
   workflow_dispatch: {}
+
+# Se várias pessoas carregarem o painel ao mesmo tempo, as execuções
+# disparadas ficam em fila em vez de rodar em paralelo — evita duas
+# cargas batendo no limite de requisições da Movidesk ao mesmo tempo e
+# dois "git push" concorrentes.
+concurrency:
+  group: atualizar-dados
+  cancel-in-progress: false
 
 permissions:
   contents: write

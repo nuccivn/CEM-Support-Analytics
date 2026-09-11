@@ -23,6 +23,9 @@ Python/pandas, sem Power BI.
   alimenta o painel).
 - `index.html` — o painel executivo (HTML/CSS/JS puro, sem build, sem
   dependências) — é o que vai pro ar na Vercel.
+- `api/refresh.js` e `api/refresh-status.js` — funções serverless da Vercel
+  que disparam o pipeline no GitHub Actions e acompanham o andamento (ver
+  "Atualização ao carregar a página" abaixo).
 
 ## Configurar o acesso à API do Movidesk (uma vez só)
 
@@ -46,17 +49,40 @@ A API da Movidesk limita a 10 requisições/minuto; o `movidesk_client.py` já
 respeita esse limite sozinho (a carga de 1 ano inteiro pode levar vários
 minutos, dependendo do volume de tickets).
 
-## Atualização automática (GitHub Actions)
+## Atualização ao carregar a página
 
-O workflow `.github/workflows/atualizar-dados.yml` roda o pipeline completo
-uma vez por dia (07h, horário de Brasília), e cada vez que rodar com sucesso
-ele já faz commit + push do `output/` atualizado — o que dispara um novo
-deploy automático na Vercel.
+Toda vez que alguém abre o painel, o `index.html` chama `api/refresh.js`
+(função serverless da Vercel), que dispara o workflow
+`.github/workflows/atualizar-dados.yml` no GitHub Actions — o mesmo pipeline
+completo (`01_carga.py` a `06_dashboard_data.py`), que busca os tickets na
+Movidesk e faz commit + push do `output/` atualizado (o que por sua vez
+dispara um novo deploy na Vercel). A página mostra "Atualizando..." e só
+desenha o painel quando essa execução termina — como a Movidesk limita a
+10 requisições/minuto, isso pode levar alguns minutos. Se a atualização
+falhar ou demorar demais, o painel cai de volta pros últimos dados
+disponíveis, com um aviso.
 
-Configuração necessária (uma vez só): no GitHub, vá em **Settings** →
-**Secrets and variables** → **Actions** → **New repository secret** e
-cadastre `MOVIDESK_TOKEN` com o mesmo token usado no `.env` local. O
-workflow também pode ser disparado manualmente pela aba **Actions** →
+Qualquer pessoa com o link do painel pode disparar uma atualização (não há
+login) — se duas pessoas carregarem a página ao mesmo tempo, as execuções
+ficam em fila no GitHub Actions (`concurrency` no workflow) em vez de rodar
+em paralelo.
+
+Ainda existe um agendamento diário (07h, horário de Brasília) como
+fallback, caso o painel fique um tempo sem ser acessado.
+
+Configuração necessária (uma vez só):
+
+1. No GitHub: **Settings** → **Secrets and variables** → **Actions** →
+   **New repository secret** → cadastre `MOVIDESK_TOKEN` com o mesmo token
+   usado no `.env` local.
+2. Crie um token de acesso do GitHub só pra esse repositório: **Settings da
+   sua conta** → **Developer settings** → **Personal access tokens** →
+   **Fine-grained tokens** → **Generate new token**, restrito a este
+   repositório, com permissão **Actions: Read and write**.
+3. Na Vercel: **Project Settings** → **Environment Variables** → adicione
+   `GH_ACTIONS_TOKEN` com o valor desse token.
+
+O workflow também pode ser disparado manualmente pela aba **Actions** →
 **Atualizar dados do painel** → **Run workflow**.
 
 ## Rodar o pipeline localmente
