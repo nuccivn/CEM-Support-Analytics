@@ -31,27 +31,15 @@ ARQUIVO_CACHE = "data/tickets_movidesk_raw.csv"
 
 # Janela de datas: fixe MOVIDESK_DATA_INICIO / MOVIDESK_DATA_FIM (formato
 # YYYY-MM-DD) no .env para reproduzir um período específico. Sem isso, o
-# padrão é "últimos 90 dias", que é o limite da rota /tickets (tickets mais
-# antigos exigem /tickets/past - ver movidesk_client.py).
+# padrão é "últimos 365 dias" (1 ano de operação de suporte). A rota
+# /tickets só cobre os últimos 90 dias por si só; movidesk_client.py
+# complementa automaticamente com /tickets/past para o restante do ano.
 _data_fim_env = os.environ.get("MOVIDESK_DATA_FIM")
 _data_inicio_env = os.environ.get("MOVIDESK_DATA_INICIO")
 data_fim = datetime.fromisoformat(_data_fim_env) if _data_fim_env else datetime.now(timezone.utc)
 data_inicio = (
-    datetime.fromisoformat(_data_inicio_env) if _data_inicio_env else data_fim - timedelta(days=90)
+    datetime.fromisoformat(_data_inicio_env) if _data_inicio_env else data_fim - timedelta(days=365)
 )
-
-# A rota /tickets só devolve tickets com lastUpdate < 90 dias (ver
-# movidesk_client.py). Um ticket criado antes disso só volta se também
-# tiver sido atualizado recentemente - senão some da consulta sem erro
-# nenhum. Se a janela pedida for mais antiga que isso, avisamos.
-_limite_lastupdate = datetime.now(timezone.utc) - timedelta(days=90)
-if data_inicio.replace(tzinfo=data_inicio.tzinfo or timezone.utc) < _limite_lastupdate:
-    print(
-        "AVISO: data_inicio é anterior a 90 dias atrás. A rota /tickets só "
-        "retorna tickets com lastUpdate recente — tickets antigos e sem "
-        "atividade nesse período podem faltar nesta carga. Para um "
-        "backfill completo, use a rota /tickets/past."
-    )
 
 print("=" * 60)
 print("BUSCANDO TICKETS NA API DO MOVIDESK")

@@ -3,6 +3,9 @@ Aula 6 - Prepara um único JSON consolidado para alimentar o dashboard
 interativo (Artifact) e documenta a exportação para o Power BI.
 """
 
+from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
+
 import pandas as pd
 import json
 
@@ -59,6 +62,7 @@ data = {
         "pct_top10_clientes": pct_top10,
         "pct_urgencia_alta": pct_alta,
         "pct_duvidas": round(cat.get("Dúvidas", 0) / total_tickets * 100, 1),
+        "gerado_em": datetime.now(timezone.utc).astimezone(ZoneInfo("America/Sao_Paulo")).strftime("%d/%m/%Y %H:%M"),
     },
     "volume_semanal": volume_semanal,
     "categorias": categorias,

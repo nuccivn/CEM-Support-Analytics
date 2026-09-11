@@ -6,3 +6,4 @@ venv/
 Thumbs.db
 .vercel
 .env
+data/tickets_movidesk_raw.csv

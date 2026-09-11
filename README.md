@@ -13,8 +13,9 @@ Python/pandas, sem Power BI.
 - `scripts/01_carga.py` a `scripts/06_dashboard_data.py` — pipeline em ordem:
   carga (via API) → limpeza → EDA → cruzamentos (Pareto) → gráficos → JSON
   consolidado.
-- `data/tickets_movidesk_raw.csv` — cache gerado pelo `01_carga.py` com os
-  tickets buscados na API (é o que `02_limpeza.py` em diante consome).
+- `data/tickets_movidesk_raw.csv` — cache local gerado pelo `01_carga.py` com
+  os tickets buscados na API (é o que `02_limpeza.py` em diante consome).
+  Fora do git (`.gitignore`) — é recriado a cada execução.
 - `data/TicketSuporteCem.xlsx` — base bruta antiga (Excel exportado
   manualmente). Mantida só como referência histórica; o pipeline não usa
   mais este arquivo, a fonte agora é a API do Movidesk.
@@ -36,11 +37,27 @@ O `.env` já está no `.gitignore` — nunca commite o token.
 
 Opcionalmente, `MOVIDESK_DATA_INICIO` e `MOVIDESK_DATA_FIM` (formato
 `YYYY-MM-DD`) fixam o período dos tickets buscados; sem isso, o padrão é
-"últimos 90 dias" (limite da rota `/tickets` da Movidesk — tickets mais
-antigos exigem a rota `/tickets/past`).
+"últimos 365 dias" (1 ano de operação). A rota `/tickets` da Movidesk só
+cobre os últimos 90 dias por conta própria — o `movidesk_client.py` já
+complementa automaticamente com a rota `/tickets/past` para cobrir o
+restante do período pedido.
 
 A API da Movidesk limita a 10 requisições/minuto; o `movidesk_client.py` já
-respeita esse limite sozinho (a carga completa leva alguns minutos).
+respeita esse limite sozinho (a carga de 1 ano inteiro pode levar vários
+minutos, dependendo do volume de tickets).
+
+## Atualização automática (GitHub Actions)
+
+O workflow `.github/workflows/atualizar-dados.yml` roda o pipeline completo
+uma vez por dia (07h, horário de Brasília), e cada vez que rodar com sucesso
+ele já faz commit + push do `output/` atualizado — o que dispara um novo
+deploy automático na Vercel.
+
+Configuração necessária (uma vez só): no GitHub, vá em **Settings** →
+**Secrets and variables** → **Actions** → **New repository secret** e
+cadastre `MOVIDESK_TOKEN` com o mesmo token usado no `.env` local. O
+workflow também pode ser disparado manualmente pela aba **Actions** →
+**Atualizar dados do painel** → **Run workflow**.
 
 ## Rodar o pipeline localmente
 
@@ -54,21 +71,22 @@ python scripts/05_graficos.py
 python scripts/06_dashboard_data.py
 ```
 
-Cada script consome o resultado do anterior e grava em `output/`. Para
-atualizar os dados, é só rodar o `01_carga.py` de novo (ele busca o período
-mais recente na API) e seguir o pipeline — os números do `index.html` hoje
-estão com um snapshot fixo; para atualizar o painel, os valores em `DATA`
-dentro do `index.html` precisam refletir o novo `output/dashboard_data.json`.
+Cada script consome o resultado do anterior e grava em `output/`. O
+`index.html` busca os dados direto de `output/dashboard_data.json` via
+`fetch` (não há mais nada pra colar manualmente) — então basta rodar o
+pipeline de novo pra atualizar o painel.
 
 ## Ver o painel localmente
 
-`index.html` é estático — basta abrir o arquivo no navegador, ou:
+Como o `index.html` busca `output/dashboard_data.json` via `fetch`, abrir o
+arquivo direto (`file://`) não funciona — o navegador bloqueia isso por
+CORS. Sirva a pasta por HTTP:
 
 ```bash
 python -m http.server 8000
 ```
 
-e acessar `http://localhost:8000`.
+e acesse `http://localhost:8000`.
 
 ## Deploy
 
