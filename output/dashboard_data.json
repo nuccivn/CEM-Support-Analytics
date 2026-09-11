@@ -1,20 +1,212 @@
 {
   "resumo": {
-    "total_tickets": 2025,
-    "periodo_ini": "12/08/2026",
+    "total_tickets": 22784,
+    "periodo_ini": "11/09/2025",
     "periodo_fim": "11/09/2026",
-    "dias_periodo": 30,
-    "media_dia": 67.5,
-    "n_organizacoes": 541,
-    "pct_top10_clientes": 16.5,
-    "pct_urgencia_alta": 69.6,
-    "pct_duvidas": 39.5,
-    "gerado_em": "11/09/2026 13:48"
+    "dias_periodo": 365,
+    "media_dia": 62.4,
+    "n_organizacoes": 1466,
+    "pct_top10_clientes": 8.6,
+    "pct_urgencia_alta": 70.5,
+    "pct_duvidas": 46.5,
+    "gerado_em": "11/09/2026 14:02"
   },
   "volume_semanal": [
     {
+      "semana": "08/09",
+      "qtd": 108
+    },
+    {
+      "semana": "15/09",
+      "qtd": 480
+    },
+    {
+      "semana": "22/09",
+      "qtd": 553
+    },
+    {
+      "semana": "29/09",
+      "qtd": 603
+    },
+    {
+      "semana": "06/10",
+      "qtd": 490
+    },
+    {
+      "semana": "13/10",
+      "qtd": 448
+    },
+    {
+      "semana": "20/10",
+      "qtd": 367
+    },
+    {
+      "semana": "27/10",
+      "qtd": 538
+    },
+    {
+      "semana": "03/11",
+      "qtd": 477
+    },
+    {
+      "semana": "10/11",
+      "qtd": 486
+    },
+    {
+      "semana": "17/11",
+      "qtd": 295
+    },
+    {
+      "semana": "24/11",
+      "qtd": 417
+    },
+    {
+      "semana": "01/12",
+      "qtd": 408
+    },
+    {
+      "semana": "08/12",
+      "qtd": 351
+    },
+    {
+      "semana": "15/12",
+      "qtd": 277
+    },
+    {
+      "semana": "22/12",
+      "qtd": 37
+    },
+    {
+      "semana": "29/12",
+      "qtd": 18
+    },
+    {
+      "semana": "05/01",
+      "qtd": 481
+    },
+    {
+      "semana": "12/01",
+      "qtd": 512
+    },
+    {
+      "semana": "19/01",
+      "qtd": 510
+    },
+    {
+      "semana": "26/01",
+      "qtd": 586
+    },
+    {
+      "semana": "02/02",
+      "qtd": 555
+    },
+    {
+      "semana": "09/02",
+      "qtd": 485
+    },
+    {
+      "semana": "16/02",
+      "qtd": 304
+    },
+    {
+      "semana": "23/02",
+      "qtd": 541
+    },
+    {
+      "semana": "02/03",
+      "qtd": 542
+    },
+    {
+      "semana": "09/03",
+      "qtd": 438
+    },
+    {
+      "semana": "16/03",
+      "qtd": 489
+    },
+    {
+      "semana": "23/03",
+      "qtd": 450
+    },
+    {
+      "semana": "30/03",
+      "qtd": 382
+    },
+    {
+      "semana": "06/04",
+      "qtd": 448
+    },
+    {
+      "semana": "13/04",
+      "qtd": 482
+    },
+    {
+      "semana": "20/04",
+      "qtd": 353
+    },
+    {
+      "semana": "27/04",
+      "qtd": 396
+    },
+    {
+      "semana": "04/05",
+      "qtd": 429
+    },
+    {
+      "semana": "11/05",
+      "qtd": 486
+    },
+    {
+      "semana": "18/05",
+      "qtd": 479
+    },
+    {
+      "semana": "25/05",
+      "qtd": 530
+    },
+    {
+      "semana": "01/06",
+      "qtd": 328
+    },
+    {
+      "semana": "08/06",
+      "qtd": 485
+    },
+    {
+      "semana": "15/06",
+      "qtd": 394
+    },
+    {
+      "semana": "22/06",
+      "qtd": 414
+    },
+    {
+      "semana": "29/06",
+      "qtd": 437
+    },
+    {
+      "semana": "06/07",
+      "qtd": 415
+    },
+    {
+      "semana": "13/07",
+      "qtd": 474
+    },
+    {
+      "semana": "20/07",
+      "qtd": 443
+    },
+    {
+      "semana": "27/07",
+      "qtd": 435
+    },
+    {
+      "semana": "03/08",
+      "qtd": 432
+    },
+    {
       "semana": "10/08",
-      "qtd": 228
+      "qtd": 498
     },
     {
       "semana": "17/08",
@@ -30,266 +222,295 @@
     },
     {
       "semana": "07/09",
-      "qtd": 237
+      "qtd": 238
     }
   ],
   "categorias": [
     {
       "categoria": "Dúvidas",
-      "qtd": 800
-    },
-    {
-      "categoria": "Chat Inativo",
-      "qtd": 229
-    },
-    {
-      "categoria": "Tickets Offline",
-      "qtd": 174
-    },
-    {
-      "categoria": "Instalação",
-      "qtd": 135
+      "qtd": 10596
     },
     {
       "categoria": "Transferência de Departamento",
-      "qtd": 115
+      "qtd": 1777
     },
     {
-      "categoria": "5. Novos Oficiais",
-      "qtd": 95
+      "categoria": "Tickets Offline",
+      "qtd": 1725
+    },
+    {
+      "categoria": "Instalação",
+      "qtd": 1583
+    },
+    {
+      "categoria": "Chat Inativo",
+      "qtd": 1355
     },
     {
       "categoria": "Erros",
-      "qtd": 92
+      "qtd": 1089
     },
     {
       "categoria": "Atualização Versão e Build",
-      "qtd": 68
+      "qtd": 993
     },
     {
       "categoria": "Nuvem Cloud",
-      "qtd": 56
+      "qtd": 723
     },
     {
       "categoria": "Implantação",
-      "qtd": 42
+      "qtd": 622
     },
     {
       "categoria": "3. Nova Personalização",
-      "qtd": 39
+      "qtd": 447
     },
     {
       "categoria": "Aplicativos",
-      "qtd": 24
-    },
-    {
-      "categoria": "Usuários",
-      "qtd": 22
-    },
-    {
-      "categoria": "Banco de Dados",
-      "qtd": 19
-    },
-    {
-      "categoria": "E-mail",
-      "qtd": 14
+      "qtd": 253
     },
     {
       "categoria": "EGCloud",
-      "qtd": 13
+      "qtd": 204
+    },
+    {
+      "categoria": "Usuários",
+      "qtd": 160
     },
     {
       "categoria": "Hardware",
-      "qtd": 10
+      "qtd": 142
     },
     {
       "categoria": "Cloud",
-      "qtd": 10
+      "qtd": 140
     },
     {
-      "categoria": "7. Dúvidas, Desistência ou Transf. Depto.",
-      "qtd": 9
+      "categoria": "Banco de Dados",
+      "qtd": 103
     },
     {
-      "categoria": "Internet",
-      "qtd": 9
-    },
-    {
-      "categoria": "Licenças",
-      "qtd": 8
+      "categoria": "5. Novos Oficiais",
+      "qtd": 101
     },
     {
       "categoria": "4. Re-personalização",
-      "qtd": 6
+      "qtd": 96
+    },
+    {
+      "categoria": "E-mail",
+      "qtd": 85
     },
     {
       "categoria": "Melhorias",
-      "qtd": 5
+      "qtd": 79
     },
     {
-      "categoria": "Servidores",
-      "qtd": 3
+      "categoria": "7. Dúvidas, Desistência ou Transf. Depto.",
+      "qtd": 70
     },
     {
-      "categoria": "1. Correção",
-      "qtd": 1
+      "categoria": "Internet",
+      "qtd": 56
+    },
+    {
+      "categoria": "Licenças",
+      "qtd": 39
     },
     {
       "categoria": "Rede",
-      "qtd": 1
+      "qtd": 17
+    },
+    {
+      "categoria": "Office 365",
+      "qtd": 17
+    },
+    {
+      "categoria": "Backup",
+      "qtd": 14
+    },
+    {
+      "categoria": "Servidores",
+      "qtd": 14
+    },
+    {
+      "categoria": "1. Correção",
+      "qtd": 10
     },
     {
       "categoria": "Documentação",
-      "qtd": 1
+      "qtd": 9
+    },
+    {
+      "categoria": "Telefonia",
+      "qtd": 8
     },
     {
       "categoria": "6. Melhoria Oficial",
+      "qtd": 6
+    },
+    {
+      "categoria": "Monitoramento",
+      "qtd": 5
+    },
+    {
+      "categoria": "Sugestões",
+      "qtd": 5
+    },
+    {
+      "categoria": "2. Conversão de Versão",
+      "qtd": 3
+    },
+    {
+      "categoria": "No-Break",
       "qtd": 1
     }
   ],
   "responsaveis": [
     {
-      "nome": "Pedro Cavalciuk",
-      "qtd": 328
-    },
-    {
-      "nome": "Giovana de Miranda",
-      "qtd": 271
-    },
-    {
-      "nome": "Patrick Nascimento",
-      "qtd": 261
-    },
-    {
-      "nome": "Daniel Joaquim ",
-      "qtd": 221
+      "nome": "Giulia Castanho",
+      "qtd": 3802
     },
     {
       "nome": "Gabriel Campos",
-      "qtd": 200
+      "qtd": 3012
     },
     {
-      "nome": "Matheus Pulcinelli",
-      "qtd": 195
+      "nome": "Giovana de Miranda",
+      "qtd": 2688
     },
     {
-      "nome": "Daniele Trinca",
-      "qtd": 117
+      "nome": "Daniel Joaquim ",
+      "qtd": 2585
     },
     {
-      "nome": "Ana Clara",
-      "qtd": 111
+      "nome": "Diogo Rodrigues",
+      "qtd": 2245
+    },
+    {
+      "nome": "Davi Barros",
+      "qtd": 1810
+    },
+    {
+      "nome": "Patrick Nascimento",
+      "qtd": 1172
+    },
+    {
+      "nome": "Yasmin Oliveira",
+      "qtd": 924
     }
   ],
   "dias_semana": [
     {
       "dia": "Segunda",
-      "qtd": 320
+      "qtd": 4592
     },
     {
       "dia": "Terça",
-      "qtd": 359
+      "qtd": 4701
     },
     {
       "dia": "Quarta",
-      "qtd": 396
+      "qtd": 4660
     },
     {
       "dia": "Quinta",
-      "qtd": 564
+      "qtd": 4816
     },
     {
       "dia": "Sexta",
-      "qtd": 375
+      "qtd": 3931
     },
     {
       "dia": "Sábado",
-      "qtd": 7
+      "qtd": 70
     },
     {
       "dia": "Domingo",
-      "qtd": 4
+      "qtd": 14
     }
   ],
   "clientes": [
     {
-      "organizacao": "Personalização de Relatorios",
-      "qtd": 98
+      "organizacao": "Suporte Técnico",
+      "qtd": 406
     },
     {
-      "organizacao": "RD FABRICACOES",
-      "qtd": 46
+      "organizacao": "GRUPO VAX (ANTIGO 6687)",
+      "qtd": 227
     },
     {
-      "organizacao": "BP GLASS",
-      "qtd": 45
+      "organizacao": "ALLPRIME",
+      "qtd": 203
     },
     {
-      "organizacao": "AMAZON TEMPER",
-      "qtd": 23
-    },
-    {
-      "organizacao": "SEM DADOS",
-      "qtd": 20
-    },
-    {
-      "organizacao": "IDEAL ESQUADRIAS DE ALUMINIO",
-      "qtd": 17
-    },
-    {
-      "organizacao": "Faktory Softwares",
-      "qtd": 17
-    },
-    {
-      "organizacao": "ARTEFAL (ANTIGO 8861)",
-      "qtd": 16
+      "organizacao": "DURANT FACHADAS E ESQUADRIAS",
+      "qtd": 160
     },
     {
       "organizacao": "Tecnologia da Informação",
-      "qtd": 15
+      "qtd": 150
     },
     {
-      "organizacao": "VM ESQUADRIAS EM ALUMINIO",
-      "qtd": 14
+      "organizacao": "SQUALUX",
+      "qtd": 149
     },
     {
-      "organizacao": "SMART METAL",
-      "qtd": 13
+      "organizacao": "Personalização de Relatorios",
+      "qtd": 138
+    },
+    {
+      "organizacao": "ALUMINOW ESQUADRIAS",
+      "qtd": 138
     },
     {
       "organizacao": "FORTGLASS SOLUCOES EM VIDROS E ESQUADRIAS (ANTIGA 9445)",
-      "qtd": 13
+      "qtd": 135
+    },
+    {
+      "organizacao": "UNIKA VIDROS E ALUMINIO",
+      "qtd": 130
+    },
+    {
+      "organizacao": "RD FABRICACOES",
+      "qtd": 129
+    },
+    {
+      "organizacao": "Ouvidoria",
+      "qtd": 115
     }
   ],
   "urgencia_geral": {
-    "Alta": 1396,
-    "Baixa": 498,
-    "Média": 111
+    "Alta": 15929,
+    "Média": 3870,
+    "Baixa": 2709,
+    "Urgente": 93
   },
   "classificacao": [
     {
       "classe": "Empresa",
-      "qtd": 1526
+      "qtd": 18387
     },
     {
       "classe": "Empresa (CEMMOBI)",
-      "qtd": 55
-    },
-    {
-      "classe": "Empresa (Onboarding)",
-      "qtd": 53
+      "qtd": 506
     },
     {
       "classe": "Atendimento CEM EXCLUSIVE",
-      "qtd": 49
+      "qtd": 496
+    },
+    {
+      "classe": "Empresa (Onboarding)",
+      "qtd": 353
     },
     {
       "classe": "Empresa (Cliente VIP)",
-      "qtd": 11
+      "qtd": 81
     },
     {
-      "classe": "Empresa (Onboarding - Cliente VIP)",
-      "qtd": 4
+      "classe": "Empresa (Mercosul)",
+      "qtd": 48
     }
   ]
 }
