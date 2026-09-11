@@ -1,6 +1,6 @@
 {
   "resumo": {
-    "total_tickets": 2026,
+    "total_tickets": 2025,
     "periodo_ini": "12/08/2026",
     "periodo_fim": "11/09/2026",
     "dias_periodo": 30,
@@ -9,12 +9,12 @@
     "pct_top10_clientes": 16.5,
     "pct_urgencia_alta": 69.6,
     "pct_duvidas": 39.5,
-    "gerado_em": "11/09/2026 13:46"
+    "gerado_em": "11/09/2026 13:48"
   },
   "volume_semanal": [
     {
       "semana": "10/08",
-      "qtd": 229
+      "qtd": 228
     },
     {
       "semana": "17/08",
@@ -52,7 +52,7 @@
     },
     {
       "categoria": "Transferência de Departamento",
-      "qtd": 116
+      "qtd": 115
     },
     {
       "categoria": "5. Novos Oficiais",
@@ -170,7 +170,7 @@
     },
     {
       "nome": "Matheus Pulcinelli",
-      "qtd": 196
+      "qtd": 195
     },
     {
       "nome": "Daniele Trinca",
@@ -192,7 +192,7 @@
     },
     {
       "dia": "Quarta",
-      "qtd": 397
+      "qtd": 396
     },
     {
       "dia": "Quinta",
@@ -262,14 +262,14 @@
     }
   ],
   "urgencia_geral": {
-    "Alta": 1397,
+    "Alta": 1396,
     "Baixa": 498,
     "Média": 111
   },
   "classificacao": [
     {
       "classe": "Empresa",
-      "qtd": 1527
+      "qtd": 1526
     },
     {
       "classe": "Empresa (CEMMOBI)",
