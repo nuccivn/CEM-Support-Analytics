@@ -29,16 +29,24 @@ load_dotenv()
 
 ARQUIVO_CACHE = "data/tickets_movidesk_raw.csv"
 
-# Janela de datas: fixe MOVIDESK_DATA_INICIO / MOVIDESK_DATA_FIM (formato
-# YYYY-MM-DD) no .env para reproduzir um período específico. Sem isso, o
-# padrão é "últimos 365 dias" (1 ano de operação de suporte). A rota
-# /tickets só cobre os últimos 90 dias por si só; movidesk_client.py
-# complementa automaticamente com /tickets/past para o restante do ano.
+# Janela de datas, em ordem de prioridade:
+# 1) MOVIDESK_DATA_INICIO / MOVIDESK_DATA_FIM (formato YYYY-MM-DD) fixam um
+#    período exato.
+# 2) MOVIDESK_DIAS (inteiro) busca "os últimos N dias a partir de agora" -
+#    é o que o seletor de período do painel usa (api/refresh.js repassa
+#    isso como input do workflow_dispatch).
+# 3) Sem nada disso, o padrão é 365 dias (1 ano de operação).
+# A rota /tickets só cobre os últimos 90 dias por si só; movidesk_client.py
+# complementa automaticamente com /tickets/past quando o período pedido é
+# maior que isso.
 _data_fim_env = os.environ.get("MOVIDESK_DATA_FIM")
 _data_inicio_env = os.environ.get("MOVIDESK_DATA_INICIO")
+_dias_env = os.environ.get("MOVIDESK_DIAS")
+dias = int(_dias_env) if _dias_env else 365
+
 data_fim = datetime.fromisoformat(_data_fim_env) if _data_fim_env else datetime.now(timezone.utc)
 data_inicio = (
-    datetime.fromisoformat(_data_inicio_env) if _data_inicio_env else data_fim - timedelta(days=365)
+    datetime.fromisoformat(_data_inicio_env) if _data_inicio_env else data_fim - timedelta(days=dias)
 )
 
 print("=" * 60)

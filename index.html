@@ -185,6 +185,33 @@
   #tooltip .tt-value { font-weight: 800; font-size: 13px; }
   #tooltip .tt-label { opacity: 0.75; }
 
+  /* ---------- barra de controle (período / atualizar) ---------- */
+  .control-bar {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 12px 20px; padding: 14px 20px;
+  }
+  .control-group { display: flex; flex-direction: column; gap: 4px; }
+  .control-label { font-size: 11.5px; font-weight: 700; color: var(--text-secondary); }
+  .control-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .control-select {
+    font: inherit; font-size: 13.5px; font-weight: 600; color: var(--text-primary);
+    background: var(--page); border: 1px solid var(--border); border-radius: 8px;
+    padding: 7px 10px; cursor: pointer;
+  }
+  .control-btn {
+    font: inherit; font-size: 13.5px; font-weight: 700; color: #fff;
+    background: var(--series-1); border: none; border-radius: 8px;
+    padding: 8px 16px; cursor: pointer; white-space: nowrap;
+  }
+  .control-btn:disabled { opacity: 0.55; cursor: default; }
+  .control-btn:not(:disabled):hover { filter: brightness(1.08); }
+  .control-status { font-size: 12px; color: var(--text-muted); }
+  .control-hint { font-size: 11.5px; color: var(--text-muted); max-width: 46ch; }
+  @media (max-width: 560px) {
+    .control-bar { flex-direction: column; align-items: stretch; }
+    .control-row { justify-content: space-between; }
+  }
+
   footer {
     display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: space-between;
     font-size: 11.5px; color: var(--text-muted); padding: 10px 2px 0; border-top: 1px solid var(--border); margin-top: 4px;
@@ -201,6 +228,7 @@
     position: fixed; inset: 0; z-index: 100; background: var(--page);
     display: flex; align-items: center; justify-content: center; padding: 24px;
   }
+  #loadingOverlay[hidden] { display: none; }
   .loading-box { max-width: 360px; text-align: center; }
   .spinner {
     width: 32px; height: 32px; margin: 0 auto 18px; border-radius: 50%;
@@ -233,10 +261,31 @@
     <div class="eyebrow">Alumisoft · Suporte CEM</div>
     <h1>Painel de Chamados de Suporte</h1>
     <div class="subtitle" id="subtitle">
-      Panorama de <b id="subtitlePeriodo">—</b> — construído direto a partir da base de tickets,
-      sem Power BI, para leitura e atualização rápida.
+      Panorama de <b id="subtitlePeriodo">—</b> — busca os tickets direto na API da Movidesk toda vez
+      que a página é carregada, sem Power BI. Escolha o período e atualize quando quiser logo abaixo.
     </div>
   </header>
+
+  <section class="card control-bar">
+    <div class="control-group">
+      <span class="control-label">PERÍODO DOS DADOS</span>
+      <div class="control-row">
+        <select class="control-select" id="periodoSelect">
+          <option value="30">Último mês</option>
+          <option value="90">Últimos 3 meses</option>
+          <option value="180">Últimos 6 meses</option>
+          <option value="270">Últimos 9 meses</option>
+          <option value="365">Último ano</option>
+        </select>
+        <button type="button" class="control-btn" id="btnAtualizar">Atualizar agora</button>
+      </div>
+      <span class="control-hint">Períodos maiores trazem mais histórico, mas demoram mais pra carregar — a Movidesk limita 10 requisições por minuto.</span>
+    </div>
+    <div class="control-group" style="align-items: flex-end;">
+      <span class="control-label">ÚLTIMA ATUALIZAÇÃO</span>
+      <span class="control-status" id="controlStatus">carregando…</span>
+    </div>
+  </section>
 
   <section class="kpi-row" id="kpiRow"></section>
 
@@ -323,11 +372,24 @@
   var overlay = document.getElementById('loadingOverlay');
   var loadingText = document.getElementById('loadingText');
   var loadingSub = document.getElementById('loadingSub');
+  var periodoSelect = document.getElementById('periodoSelect');
+  var btnAtualizar = document.getElementById('btnAtualizar');
+  var controlStatus = document.getElementById('controlStatus');
 
   var POLL_STATUS_MS = 5000;
   var TIMEOUT_STATUS_MS = 6 * 60 * 1000; // 6 min
   var POLL_JSON_MS = 4000;
   var TENTATIVAS_JSON = 15;
+  var LS_PERIODO = 'cem_periodo_dias';
+  var PERIODOS = { '30': '1 mês', '90': '3 meses', '180': '6 meses', '270': '9 meses', '365': '1 ano' };
+
+  function periodoLabel(dias) { return PERIODOS[String(dias)] || (dias + ' dias'); }
+
+  // Lembra a última escolha de período entre visitas (por navegador).
+  try {
+    var salvo = localStorage.getItem(LS_PERIODO);
+    if (salvo && PERIODOS[salvo]) periodoSelect.value = salvo;
+  } catch (e) { /* localStorage indisponível (aba anônima etc.) - segue com o padrão */ }
 
   function setLoading(texto, sub) {
     loadingText.textContent = texto;
@@ -380,7 +442,13 @@
     })();
   }
 
-  function iniciar() {
+  var atualizacaoEmAndamento = false;
+
+  function iniciar(dias) {
+    if (atualizacaoEmAndamento) return;
+    atualizacaoEmAndamento = true;
+    btnAtualizar.disabled = true;
+    overlay.hidden = false;
     setLoading('Verificando dados atuais…');
     var geradoEmAntigo = null;
 
@@ -390,10 +458,14 @@
         if (atual) geradoEmAntigo = atual.resumo.gerado_em;
 
         setLoading(
-          'Buscando os tickets mais recentes na Movidesk…',
+          'Buscando os tickets d' + (dias === 30 ? 'o último mês' : 'os últimos ' + periodoLabel(dias)) + ' na Movidesk…',
           'Isso pode levar alguns minutos (a API tem limite de requisições).'
         );
-        return buscarJSON('api/refresh', { method: 'POST' });
+        return buscarJSON('api/refresh', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ dias: dias }),
+        });
       })
       .then(function (r) {
         if (r.status === 'already_running') {
@@ -428,18 +500,33 @@
               String(err && err.message ? err.message : err)
             );
           });
+      })
+      .then(function () {
+        atualizacaoEmAndamento = false;
+        btnAtualizar.disabled = false;
       });
   }
 
-  iniciar();
+  btnAtualizar.addEventListener('click', function () {
+    var dias = Number(periodoSelect.value);
+    try { localStorage.setItem(LS_PERIODO, String(dias)); } catch (e) { /* ignora */ }
+    iniciar(dias);
+  });
+
+  iniciar(Number(periodoSelect.value));
 
   function renderDashboard(DATA, opts) {
     document.getElementById('footerData').textContent = 'Painel atualizado em ' + DATA.resumo.gerado_em;
     document.getElementById('subtitlePeriodo').textContent =
       DATA.resumo.periodo_ini + ' a ' + DATA.resumo.periodo_fim + ' (' + DATA.resumo.dias_periodo + ' dias)';
+    controlStatus.textContent = DATA.resumo.gerado_em;
+
+    var avisoAnterior = document.getElementById('avisoBanner');
+    if (avisoAnterior) avisoAnterior.remove();
 
     if (opts && opts.avisoDesatualizado) {
       var aviso = document.createElement('div');
+      aviso.id = 'avisoBanner';
       aviso.style.cssText =
         'background:var(--warning);color:#1a1400;padding:10px 14px;border-radius:8px;' +
         'font-size:12.5px;font-weight:700;margin-bottom:16px;';

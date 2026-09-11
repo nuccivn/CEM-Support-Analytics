@@ -6,7 +6,12 @@ on:
     # abra o painel por um tempo (o normal é o próprio painel disparar
     # isso via api/refresh.js a cada carregamento de página).
     - cron: "0 10 * * *"
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      dias:
+        description: "Quantos dias de histórico buscar (30/90/180/270/365)"
+        required: false
+        default: "365"
 
 # Se várias pessoas carregarem o painel ao mesmo tempo, as execuções
 # disparadas ficam em fila em vez de rodar em paralelo — evita duas
@@ -35,6 +40,7 @@ jobs:
       - name: Rodar pipeline (carga da API do Movidesk -> dashboard_data.json)
         env:
           MOVIDESK_TOKEN: ${{ secrets.MOVIDESK_TOKEN }}
+          MOVIDESK_DIAS: ${{ github.event.inputs.dias || '365' }}
         run: |
           python scripts/01_carga.py
           python scripts/02_limpeza.py

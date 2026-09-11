@@ -4,7 +4,7 @@ Análise dos chamados de suporte do produto CEM (Alumisoft): carga e limpeza dos
 dados, exploração, cruzamentos e um painel executivo interativo — tudo em
 Python/pandas, sem Power BI.
 
-**Painel ao vivo:** _(adicionar link da Vercel aqui depois do deploy)_
+**Painel ao vivo:** https://supportanalytics.vercel.app
 
 ## O que tem aqui
 
@@ -38,12 +38,16 @@ Python/pandas, sem Power BI.
 ⚠️ Gerar uma chave nova invalida a anterior em qualquer lugar que já a use.
 O `.env` já está no `.gitignore` — nunca commite o token.
 
-Opcionalmente, `MOVIDESK_DATA_INICIO` e `MOVIDESK_DATA_FIM` (formato
-`YYYY-MM-DD`) fixam o período dos tickets buscados; sem isso, o padrão é
-"últimos 365 dias" (1 ano de operação). A rota `/tickets` da Movidesk só
-cobre os últimos 90 dias por conta própria — o `movidesk_client.py` já
-complementa automaticamente com a rota `/tickets/past` para cobrir o
-restante do período pedido.
+Três formas de controlar o período buscado, em ordem de prioridade:
+1. `MOVIDESK_DATA_INICIO` / `MOVIDESK_DATA_FIM` (formato `YYYY-MM-DD`) fixam
+   datas exatas.
+2. `MOVIDESK_DIAS` (inteiro) busca "os últimos N dias a partir de agora" — é
+   o que o seletor de período do painel usa (30/90/180/270/365).
+3. Sem nada disso, o padrão é 365 dias (1 ano).
+
+A rota `/tickets` da Movidesk só cobre os últimos 90 dias por conta própria
+— o `movidesk_client.py` já complementa automaticamente com a rota
+`/tickets/past` para cobrir o restante do período pedido.
 
 A API da Movidesk limita a 10 requisições/minuto; o `movidesk_client.py` já
 respeita esse limite sozinho (a carga de 1 ano inteiro pode levar vários
@@ -61,6 +65,13 @@ desenha o painel quando essa execução termina — como a Movidesk limita a
 10 requisições/minuto, isso pode levar alguns minutos. Se a atualização
 falhar ou demorar demais, o painel cai de volta pros últimos dados
 disponíveis, com um aviso.
+
+O seletor de período no topo do painel (1/3/6/9 meses ou 1 ano) manda o
+período escolhido pro `api/refresh.js`, que repassa como input do
+`workflow_dispatch` (`dias`) — períodos menores buscam bem mais rápido, já
+que ficam dentro da janela de 90 dias e nem precisam da rota
+`/tickets/past`. A última escolha fica salva no navegador (localStorage) e
+volta a ser usada no próximo carregamento.
 
 Qualquer pessoa com o link do painel pode disparar uma atualização (não há
 login) — se duas pessoas carregarem a página ao mesmo tempo, as execuções
@@ -116,8 +127,15 @@ e acesse `http://localhost:8000`.
 
 ## Deploy
 
-Importado direto do GitHub na Vercel (sem build step — framework preset
-"Other"). Qualquer push na branch principal atualiza o painel automaticamente.
+Projeto `supportanalytics` na Vercel, conectado ao repositório GitHub
+`nuccivn/CEM-Support-Analytics` (sem build step — framework preset "Other").
+Qualquer push na branch `main` atualiza o painel automaticamente.
+
+⚠️ Se um dia o site parecer "travado" num snapshot antigo mesmo após vários
+pushes, o primeiro lugar a checar é se o projeto na Vercel ainda está
+conectado a este repositório (Project Settings → Git) — já aconteceu de
+ele estar apontando pra um repo homônimo errado, e nesse caso nenhum push
+aqui gera deploy nenhum.
 
 ## Principais achados (snapshot 09/06 a 09/09/2026)
 
