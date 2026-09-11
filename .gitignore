@@ -5,5 +5,5 @@ venv/
 .DS_Store
 Thumbs.db
 .vercel
-.env
+.env*
 data/tickets_movidesk_raw.csv

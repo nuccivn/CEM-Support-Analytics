@@ -35,14 +35,13 @@ jobs:
       - name: Rodar pipeline (carga da API do Movidesk -> dashboard_data.json)
         env:
           MOVIDESK_TOKEN: ${{ secrets.MOVIDESK_TOKEN }}
-        working-directory: scripts
         run: |
-          python 01_carga.py
-          python 02_limpeza.py
-          python 03_eda.py
-          python 04_cruzamentos.py
-          python 05_graficos.py
-          python 06_dashboard_data.py
+          python scripts/01_carga.py
+          python scripts/02_limpeza.py
+          python scripts/03_eda.py
+          python scripts/04_cruzamentos.py
+          python scripts/05_graficos.py
+          python scripts/06_dashboard_data.py
 
       - name: Commitar e enviar dados atualizados
         run: |

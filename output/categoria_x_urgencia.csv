@@ -1,11 +1,36 @@
 Categoria,Alta,Baixa,Média,Urgente
-Atualização Versão e Build,97.8,1.3,0.9,0.0
+1. Correção,0.0,20.0,70.0,10.0
+2. Conversão de Versão,0.0,0.0,100.0,0.0
+3. Nova Personalização,4.3,24.6,65.1,6.0
+4. Re-personalização,2.1,20.6,73.2,4.1
+5. Novos Oficiais,1.0,95.0,4.0,0.0
+6. Melhoria Oficial,0.0,50.0,16.7,33.3
+"7. Dúvidas, Desistência ou Transf. Depto.",1.4,31.4,67.1,0.0
+Aplicativos,17.0,66.0,17.0,0.0
+Atualização Versão e Build,95.3,0.5,4.2,0.0
+Backup,14.3,71.4,7.1,7.1
+Banco de Dados,29.1,56.3,14.6,0.0
 Chat Inativo,0.0,100.0,0.0,0.0
-Dúvidas,97.9,0.9,1.1,0.0
-Erros,96.4,1.4,1.8,0.5
-Implantação,99.2,0.0,0.0,0.8
-Instalação,99.0,0.7,0.2,0.0
-Melhorias,100.0,0.0,0.0,0.0
-Nuvem Cloud,98.4,0.0,1.1,0.5
-Tickets Offline,49.3,0.4,50.3,0.0
-Transferência de Departamento,94.2,2.7,3.0,0.0
+Cloud,25.7,55.7,18.6,0.0
+Documentação,11.1,77.8,11.1,0.0
+Dúvidas,86.5,2.9,10.6,0.0
+E-mail,10.6,63.5,25.9,0.0
+EGCloud,24.9,39.0,33.7,2.4
+Erros,85.1,0.9,10.7,3.3
+Hardware,18.3,54.9,26.1,0.7
+Implantação,99.0,0.3,0.2,0.5
+Instalação,94.1,0.4,5.4,0.0
+Internet,32.1,50.0,14.3,3.6
+Licenças,41.0,41.0,17.9,0.0
+Melhorias,89.9,0.0,8.9,1.3
+Monitoramento,0.0,80.0,20.0,0.0
+No-Break,0.0,0.0,100.0,0.0
+Nuvem Cloud,89.5,0.4,9.7,0.4
+Office 365,0.0,76.5,23.5,0.0
+Rede,5.9,64.7,29.4,0.0
+Servidores,42.9,35.7,14.3,7.1
+Sugestões,0.0,0.0,100.0,0.0
+Telefonia,12.5,12.5,50.0,25.0
+Tickets Offline,15.1,0.4,84.5,0.0
+Transferência de Departamento,82.0,1.8,16.2,0.0
+Usuários,19.3,75.8,5.0,0.0
