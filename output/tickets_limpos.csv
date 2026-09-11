@@ -1,8 +1,4 @@
 ﻿Número,Tipo,Assunto,Aberto em,Responsável,Categoria,Urgência,Status,Organização,Contato,Classificação Cliente,Dia da Semana,Ano-Mês,Semana
-36427,Público,Mapeamento de rede do CEM,2025-09-11 11:31:05.959195200,Yasmin Oliveira,Instalação,Alta,Resolvido,ALUMINIA PVC (ANTIGO 867),Jean,Empresa,Quinta,2025-09,37
-36428,Público,Dúvidas - Importar Esquadrias,2025-09-11 11:32:25.521442500,Francine Antunes,Dúvidas,Alta,Resolvido,IMPERIOM ESQUADRIAS,Paulo Roberto,Não classificado,Quinta,2025-09,37
-36429,Público,Chat Inativo ,2025-09-11 11:32:56.582098100,Davi Barros,Tickets Offline,Média,Resolvido,SMART ALUMÍNIOS(CEMMOBI),Luciane Teodoro Guimaraes Simoes,Empresa (CEMMOBI),Quinta,2025-09,37
-36431,Público,Mapeamento de rede do CEM,2025-09-11 11:43:56.957234200,Yasmin Oliveira,Instalação,Alta,Resolvido,INOVARE ALUMINIO,Inovare Aluminio,Empresa,Quinta,2025-09,37
 36432,Público,Offline message ,2025-09-11 11:57:43.772477900,Giulia Castanho,Tickets Offline,Média,Resolvido,NP PORTAS DE ACM E ESQUADRIAS DE ALUMINIO,Reginaldo,Empresa,Quinta,2025-09,37
 36433,Público,Duvida referente a precificação de materiais no CEM,2025-09-11 12:05:44.880265300,Diogo Rodrigues,Dúvidas,Alta,Resolvido,NP PORTAS DE ACM E ESQUADRIAS DE ALUMINIO,,Não classificado,Quinta,2025-09,37
 36434,Público,Liberação de Acesso a VMs,2025-09-11 12:09:39.245548100,Rodrigo Santos,Usuários,Baixa,Resolvido,Tecnologia da Informação,Nathalia Fialho Lourenco,Não classificado,Quinta,2025-09,37
@@ -11849,7 +11845,7 @@
 49900,Público,Duvida no ajustar do orçamento,2026-03-23 09:49:57.801753900,Daniel Joaquim ,Dúvidas,Alta,Resolvido,ALEXANDRE VARZEA MOTTA SABRA,RENAN,Empresa,Segunda,2026-03,13
 49901,Público,Informações no extranet causando erro - campo relatórios,2026-03-23 09:50:11.873665500,Davi Barros,Erros,Alta,Resolvido,ALUMIVIDROS (ATUAL 591),Rupter Sousa,Empresa,Segunda,2026-03,13
 49902,Público,Chat inativo,2026-03-23 09:52:11.126907400,Giovana de Miranda,Chat Inativo,Baixa,Resolvido,VM ESQUADRIAS EM ALUMINIO,Fabíola VM Esquadrias,Empresa,Segunda,2026-03,13
-49905,Público,Atualização de build + procedimento de atualização de material da perfil,2026-03-23 09:57:02.622320900,Giovana de Miranda,Atualização Versão e Build,Alta,Resolvido,VM ESQUADRIAS EM ALUMINIO,Fabíola VM Esquadrias,Empresa,Segunda,2026-03,13
+49905,Público,Atualização de build + procedimento de atualização de material da perfil,2026-03-23 09:57:02.622320900,Giovana de Miranda,Atualização Versão e Build,Alta,Resolvido,VM ESQUADRIAS EM ALUMINIO,Lucas,Empresa,Segunda,2026-03,13
 49906,Público,Dúvida no acesso do EGCLOUD (esqueceu a senha do usuário),2026-03-23 09:58:37.330772500,Daniel Joaquim ,Nuvem Cloud,Alta,Resolvido,ARETÊ ESQUADRIAS,Lucas Lucena,Empresa,Segunda,2026-03,13
 49907,Público,Liberação de acesso adm,2026-03-23 10:00:42.002619400,Daniele Trinca,Usuários,Baixa,Resolvido,Tecnologia da Informação,Nathalia Fialho Lourenco,Não classificado,Segunda,2026-03,13
 49908,Público,Atualização de material CDA,2026-03-23 10:02:09.648558100,Giulia Castanho,Dúvidas,Alta,Resolvido,PLENITUDE GLASS,Mariano Moraes - Depto Técnico RBG Soluções em Vidro e Alumínio,Empresa,Segunda,2026-03,13
@@ -22795,3 +22791,5 @@
 62182,Público,Duvida referente a substituição de perfil global ,2026-09-11 10:34:57.469458000,Matheus Pulcinelli,Dúvidas,Alta,Resolvido,ALUMAX,Patricia Rodrigues,Empresa,Sexta,2026-09,37
 62183,Público,Dúvida referente a inteligência artificial ALUMINA,2026-09-11 10:34:58.392959800,Giovana de Miranda,Dúvidas,Alta,Resolvido,WS ESQUADRIAS,Vivian Sáes,Empresa,Sexta,2026-09,37
 62184,Público,Impressão de relatórios ,2026-09-11 10:36:03.699790500,Pedro Cavalciuk,Dúvidas,Alta,Resolvido,ALUNOBRE,Alysson A. Lima,Empresa,Sexta,2026-09,37
+62185,Público,Reinstal DEPTO. TÉCNICO - REINSTAL,2026-09-11 11:18:49.097158800,Matheus Pulcinelli,,,Novo,REINSTAL,Reinstal DEPTO. TÉCNICO,Empresa,Sexta,2026-09,37
+62186,Público,Chat Inativo,2026-09-11 11:34:26.483886100,Ana Clara,Chat Inativo,Baixa,Resolvido,RD FABRICACOES,Sá - RD,Empresa,Sexta,2026-09,37

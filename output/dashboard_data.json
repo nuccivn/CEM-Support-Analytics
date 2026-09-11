@@ -1,20 +1,20 @@
 {
   "resumo": {
-    "total_tickets": 22795,
+    "total_tickets": 22793,
     "periodo_ini": "11/09/2025",
     "periodo_fim": "11/09/2026",
     "dias_periodo": 365,
-    "media_dia": 62.5,
+    "media_dia": 62.4,
     "n_organizacoes": 1467,
     "pct_top10_clientes": 8.6,
     "pct_urgencia_alta": 70.5,
     "pct_duvidas": 46.5,
-    "gerado_em": "11/09/2026 11:47"
+    "gerado_em": "11/09/2026 12:02"
   },
   "volume_semanal": [
     {
       "semana": "08/09",
-      "qtd": 125
+      "qtd": 121
     },
     {
       "semana": "15/09",
@@ -222,13 +222,13 @@
     },
     {
       "semana": "07/09",
-      "qtd": 232
+      "qtd": 234
     }
   ],
   "categorias": [
     {
       "categoria": "Dúvidas",
-      "qtd": 10602
+      "qtd": 10601
     },
     {
       "categoria": "Transferência de Departamento",
@@ -236,15 +236,15 @@
     },
     {
       "categoria": "Tickets Offline",
-      "qtd": 1726
+      "qtd": 1725
     },
     {
       "categoria": "Instalação",
-      "qtd": 1586
+      "qtd": 1584
     },
     {
       "categoria": "Chat Inativo",
-      "qtd": 1354
+      "qtd": 1355
     },
     {
       "categoria": "Erros",
@@ -390,7 +390,7 @@
     },
     {
       "nome": "Davi Barros",
-      "qtd": 1812
+      "qtd": 1811
     },
     {
       "nome": "Patrick Nascimento",
@@ -398,7 +398,7 @@
     },
     {
       "nome": "Yasmin Oliveira",
-      "qtd": 927
+      "qtd": 925
     }
   ],
   "dias_semana": [
@@ -416,11 +416,11 @@
     },
     {
       "dia": "Quinta",
-      "qtd": 4834
+      "qtd": 4830
     },
     {
       "dia": "Sexta",
-      "qtd": 3924
+      "qtd": 3926
     },
     {
       "dia": "Sábado",
@@ -474,7 +474,7 @@
     },
     {
       "organizacao": "RD FABRICACOES",
-      "qtd": 127
+      "qtd": 128
     },
     {
       "organizacao": "Ouvidoria",
@@ -482,9 +482,9 @@
     }
   ],
   "urgencia_geral": {
-    "Alta": 15934,
-    "Média": 3876,
-    "Baixa": 2709,
+    "Alta": 15931,
+    "Média": 3875,
+    "Baixa": 2710,
     "Urgente": 93
   },
   "classificacao": [
@@ -494,7 +494,7 @@
     },
     {
       "classe": "Empresa (CEMMOBI)",
-      "qtd": 507
+      "qtd": 506
     },
     {
       "classe": "Atendimento CEM EXCLUSIVE",
