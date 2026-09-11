@@ -1,12 +1,4 @@
 ﻿Número,Tipo,Assunto,Aberto em,Responsável,Categoria,Urgência,Status,Organização,Contato,Classificação Cliente,Dia da Semana,Ano-Mês,Semana
-60027,Público,Offline message - Vetra Prime Esquadrias,2026-08-12 13:01:49.434015400,Pedro Cavalciuk,Tickets Offline,Alta,Resolvido,VETRA PRIME ESQUADRIAS ( ANTIGO 13700),Vetra Prime Esquadrias,Não classificado,Quarta,2026-08,33
-60028,Público,Offline message - Carolina,2026-08-12 13:02:31.807912600,Pedro Cavalciuk,Tickets Offline,Alta,Resolvido,VIDRACARIA KEOPS,Carolina,Empresa,Quarta,2026-08,33
-60029,Público,Dúvida referente á existência de material MOF + chat inativo,2026-08-12 13:07:44.375869500,Giovana de Miranda,Dúvidas,Alta,Resolvido,IDEAL ESQUADRIAS DE ALUMINIO,IDEAL ESQUADRIAS,Empresa,Quarta,2026-08,33
-60030,Público,Dúvida referente a filtros em abrir nova obra,2026-08-12 13:07:51.850673800,Giovana de Miranda,Dúvidas,Alta,Resolvido,VAL AÇO PWJ,Matheus,Atendimento CEM EXCLUSIVE,Quarta,2026-08,33
-60031,Público,Auto resolução,2026-08-12 13:08:03.897660900,Patrick Nascimento,Chat Inativo,Baixa,Resolvido,VIDRACARIA KEOPS,Carolina,Empresa,Quarta,2026-08,33
-60032,Público,Duvida referente a desativar obra ,2026-08-12 13:25:19.833968100,Matheus Pulcinelli,Dúvidas,Alta,Resolvido,METAL LAR,Carollyne Brogliato,Empresa,Quarta,2026-08,33
-60033,Público,Duvidas referente a localizar tipologia,2026-08-12 13:26:29.203688700,Davi Barros,Dúvidas,Média,Resolvido,TOP GLASS(CEMMOBI),Larissa,Empresa (CEMMOBI),Quarta,2026-08,33
-60035,Público,Dúvida referente a criação de projeto para fabricação,2026-08-12 13:36:04.873403500,Giovana de Miranda,Dúvidas,Alta,Resolvido,IDEAL ESQUADRIAS DE ALUMINIO,IDEAL ESQUADRIAS,Empresa,Quarta,2026-08,33
 60036,Público,Transferência de departamento - factory + chat inativo,2026-08-12 13:45:24.767208100,Matheus Pulcinelli,Transferência de Departamento,Alta,Resolvido,SÃO PAULO ESQUADRIAS,Gabriel Rainha,Empresa,Quarta,2026-08,33
 60037,Público,Mudança no tamanho máximo de peitoril e folha,2026-08-12 13:51:59.750658500,Pedro Cavalciuk,Dúvidas,Alta,Resolvido,2 IRMAOS,karen,Empresa,Quarta,2026-08,33
 60038,Público,Dúvida sobre como ativar cores cadastradas,2026-08-12 13:54:22.700400600,Ana Clara,Dúvidas,Baixa,Novo,METRU ESQUADRIAS EM ALUMINIO E VIDROS,Vivian Nunes,Empresa,Quarta,2026-08,33
@@ -1405,7 +1397,7 @@
 61522,Público,duvida referente a reinstalação do sistema provisoriamente ,2026-08-31 14:58:23.017487500,Patrick Nascimento,Dúvidas,Baixa,Resolvido,ALUTEK ALUMINIO,Raphael Alves,Empresa,Segunda,2026-08,36
 61523,Público,Analise servidor Faktory - 7001,2026-08-31 15:02:07.943149200,Daniele Trinca,Servidores,Alta,Resolvido,Alumisoft Sistemas,Rodrigo Santos,Empresa,Segunda,2026-08,36
 61524,Público,Dúvida referente a cadastrar modelo 3d,2026-08-31 15:02:36.905443900,Giovana de Miranda,Dúvidas,Alta,Resolvido,BP GLASS,⠀,Empresa,Segunda,2026-08,36
-61525,Público,Envio de arquivo e logotipo - Proposta Comercial CEM,2026-08-31 15:03:43.557682900,Vinicius Nucci,3. Nova Personalização,Baixa,Resolvido,VETRA PRIME ESQUADRIAS ( ANTIGO 13700),priscila@vetraprimesquadrias.com.br,Não classificado,Segunda,2026-08,36
+61525,Público,Envio de arquivo e logotipo - Proposta Comercial CEM,2026-08-31 15:03:43.557682900,Vinicius Nucci,3. Nova Personalização,Baixa,Em atendimento,VETRA PRIME ESQUADRIAS ( ANTIGO 13700),priscila@vetraprimesquadrias.com.br,Não classificado,Segunda,2026-08,36
 61526,Público,Duvida referente a salvar como,2026-08-31 15:04:19.141097400,Matheus Pulcinelli,Dúvidas,Alta,Resolvido,GUILES ESQUADRIAS,Joyce Gomes,Empresa,Segunda,2026-08,36
 61528,Público,Dúvida referente a cadastro de vidros + chat inativo,2026-08-31 15:10:52.446169000,Giovana de Miranda,Dúvidas,Alta,Resolvido,ALUTEC DF,Jão📊🧑🏻‍💻,Empresa,Segunda,2026-08,36
 61529,Público,Transferência de departamento - Financeiro,2026-08-31 15:11:29.457230800,Daniel Joaquim ,Transferência de Departamento,Alta,Resolvido,ART DESING ALUMINIO,Art Design Esquadrias,Empresa,Segunda,2026-08,36
@@ -1526,7 +1518,7 @@
 61652,Público,Dúvida referente à desbloqueio de espessura de vidro,2026-09-01 14:15:58.400711000,Giovana de Miranda,Dúvidas,Alta,Resolvido,MF ESQUADRIAS E VIDROS,MF Esquadrias E Vidros,Empresa,Terça,2026-09,36
 61653,Público,duvida referente a lentidão do EGCLOUD + chat inativo,2026-09-01 14:25:04.276275200,Patrick Nascimento,Dúvidas,Alta,Resolvido,MF ESQUADRIAS E VIDROS,Ricardo,Empresa,Terça,2026-09,36
 61654,Público,Tranferencia de departamento > financeiro ,2026-09-01 14:26:39.747765700,Pedro Cavalciuk,Transferência de Departamento,Alta,Resolvido,HATA ALUMINIUM,EDUARDO KIYOSHI HATANAKA,Empresa,Terça,2026-09,36
-61655,Público,Instalação CEM Plus,2026-09-01 14:28:40.511803800,,,,Novo,Ouvidoria,Erick Silva,Não classificado,Terça,2026-09,36
+61655,Público,Instalação CEM Plus,2026-09-01 14:28:40.511803800,Matheus Pulcinelli,,,Novo,Ouvidoria,Erick Silva,Não classificado,Terça,2026-09,36
 61656,Público,Chat inativo,2026-09-01 14:36:54.224091600,Daniel Joaquim ,Chat Inativo,Baixa,Resolvido,VIDRACARIA ATUAL,Nágela - Vidraçaria Atual,Empresa,Terça,2026-09,36
 61657,Público,Dúvida referente a ocultar medidas na proposta ,2026-09-01 14:44:35.595197000,Gabriel Campos,Dúvidas,Alta,Resolvido,BUSANELLO ESQUADRIAS,Lorrana,Empresa,Terça,2026-09,36
 61658,Público,Lentidão no sistema ,2026-09-01 14:54:22.459356300,Gabriel Campos,Erros,Alta,Resolvido,OLIVAZ ESQUADRIAS,Lucas,Empresa,Terça,2026-09,36
@@ -1989,7 +1981,6 @@
 62143,Público,Atualização de build ,2026-09-10 14:12:13.628826000,Matheus Pulcinelli,Atualização Versão e Build,Alta,Resolvido,EVERTON DE LIMA,EVERTON DE LIMA,Empresa,Quinta,2026-09,37
 62144,Público,duvida referente a emissão de relatório de proposta comercial,2026-09-10 14:23:52.118513000,Patrick Nascimento,Dúvidas,Alta,Resolvido,SUPREMA - ESQUADRIAS DE ALUMINIO,Jose Mateus,Empresa,Quinta,2026-09,37
 62145,Público,Solicitação de material MOF,2026-09-10 14:33:36.884017100,Matheus Pulcinelli,Dúvidas,Alta,Resolvido,EVERTON DE LIMA,EVERTON DE LIMA,Empresa,Quinta,2026-09,37
-62146,Público,Erro na otimização de chapas,2026-09-10 14:33:39.620005600,,,,Novo,ALLPRIME,Produtos CEM Cards,Empresa,Quinta,2026-09,37
 62147,Público,Dúvida referente à procedimento para importar planilhas de materiais no cem,2026-09-10 14:40:31.009280700,Giovana de Miranda,Dúvidas,Alta,Resolvido,LOUGUESS,Paulo Henrique Breda Conceição,Empresa,Quinta,2026-09,37
 62148,Público,personalização de relatórios feito pelo suporte + chat inativo,2026-09-10 14:41:44.279764900,Patrick Nascimento,Dúvidas,Baixa,Resolvido,FORTGLASS SOLUCOES EM VIDROS E ESQUADRIAS (ANTIGA 9445),Cláudio José,Atendimento CEM EXCLUSIVE,Quinta,2026-09,37
 62149,Público,Duvida referente a orçamento ,2026-09-10 14:44:00.179186600,Matheus Pulcinelli,Dúvidas,Alta,Resolvido,TARGET CONSTRUCOES,Michele,Empresa,Quinta,2026-09,37
@@ -2007,7 +1998,6 @@
 62161,Público,Transferência de departamento - Faktory + chat inativo,2026-09-10 16:31:02.994538200,Daniel Joaquim ,Transferência de Departamento,Alta,Resolvido,IDEAL ESQUADRIAS DE ALUMINIO,IDEAL ESQUADRIAS,Empresa,Quinta,2026-09,37
 62162,Público,Agendamento de atendimento ao cliente,2026-09-10 16:53:37.396158200,Giovana de Miranda,Dúvidas,Alta,Resolvido,EXCLUSIVA ESQUADRIAS (ANTIGO 10371),Exclusiva Esquadrias,Empresa,Quinta,2026-09,37
 62163,Público,Offline message - Cleiton Kepler,2026-09-10 17:06:26.482424400,Pedro Cavalciuk,Tickets Offline,Alta,Resolvido,PLENITUDE GLASS,Cleiton Kepler,Empresa,Quinta,2026-09,37
-62164,Público,[BUG] - Inconsistência na otimização de chapas,2026-09-11 05:59:26.365639900,,,,Novo,ALLPRIME,Produtos CEM Cards,Empresa,Sexta,2026-09,37
 62165,Público,Offline message - EDUARDO KIYOSHI HATANAKA,2026-09-11 07:00:14.359132600,Pedro Cavalciuk,Tickets Offline,Alta,Resolvido,HATA ALUMINIUM,EDUARDO KIYOSHI HATANAKA,Empresa,Sexta,2026-09,37
 62166,Público,Offline message - Diego,2026-09-11 07:26:44.698073800,Pedro Cavalciuk,Tickets Offline,Alta,Resolvido,SEM DADOS,Diego,Não classificado,Sexta,2026-09,37
 62167,Público,Offline message - Financeiro Magnum,2026-09-11 07:47:17.912359700,Pedro Cavalciuk,Tickets Offline,Alta,Resolvido,MAGNUM ESQUADRIAS (ESPACO DO VIDRO),Financeiro Magnum,Empresa,Sexta,2026-09,37
@@ -2032,5 +2022,5 @@
 62186,Público,Chat Inativo,2026-09-11 11:34:26.483886100,Ana Clara,Chat Inativo,Baixa,Resolvido,RD FABRICACOES,Sá - RD,Empresa,Sexta,2026-09,37
 62187,Público,Dúvida referente a calculo de itens,2026-09-11 11:36:06.014944400,Giovana de Miranda,Dúvidas,Alta,Resolvido,EXCLUSIVA ESQUADRIAS (ANTIGO 10371),Exclusiva Esquadrias,Empresa,Sexta,2026-09,37
 62188,Público,CEM MOBI - Implantação - LG FORTES - 52.679.489/0001-73 (13863),2026-09-11 11:53:39.343726300,,,,Novo,Alumisoft Sistemas,Implantacao,Empresa,Sexta,2026-09,37
-62189,Público,Mensagem offline - RUBERTI ESQUADRIAS(CEMMOBI),2026-09-11 12:08:31.998210000,,,,Novo,RUBERTI ESQUADRIAS(CEMMOBI),,Não classificado,Sexta,2026-09,37
-62190,Público,Offline message - Sá - RD,2026-09-11 12:10:16.260288600,,,,Novo,RD FABRICACOES,Sá - RD,Empresa,Sexta,2026-09,37
+62189,Público,Mensagem offline - RUBERTI ESQUADRIAS(CEMMOBI),2026-09-11 12:08:31.998210000,Pedro Cavalciuk,Tickets Offline,Alta,Resolvido,RUBERTI ESQUADRIAS(CEMMOBI),,Não classificado,Sexta,2026-09,37
+62190,Público,Offline message - Sá - RD,2026-09-11 12:10:16.260288600,Pedro Cavalciuk,Tickets Offline,Alta,Resolvido,RD FABRICACOES,Sá - RD,Empresa,Sexta,2026-09,37

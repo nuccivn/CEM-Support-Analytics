@@ -1,20 +1,20 @@
 {
   "resumo": {
-    "total_tickets": 2035,
+    "total_tickets": 2025,
     "periodo_ini": "12/08/2026",
     "periodo_fim": "11/09/2026",
     "dias_periodo": 30,
-    "media_dia": 67.8,
+    "media_dia": 67.5,
     "n_organizacoes": 540,
     "pct_top10_clientes": 16.5,
     "pct_urgencia_alta": 69.6,
-    "pct_duvidas": 39.6,
-    "gerado_em": "11/09/2026 12:23"
+    "pct_duvidas": 39.5,
+    "gerado_em": "11/09/2026 13:42"
   },
   "volume_semanal": [
     {
       "semana": "10/08",
-      "qtd": 237
+      "qtd": 229
     },
     {
       "semana": "17/08",
@@ -30,17 +30,17 @@
     },
     {
       "semana": "07/09",
-      "qtd": 238
+      "qtd": 236
     }
   ],
   "categorias": [
     {
       "categoria": "Dúvidas",
-      "qtd": 805
+      "qtd": 800
     },
     {
       "categoria": "Chat Inativo",
-      "qtd": 230
+      "qtd": 229
     },
     {
       "categoria": "Tickets Offline",
@@ -154,11 +154,11 @@
     },
     {
       "nome": "Giovana de Miranda",
-      "qtd": 274
+      "qtd": 271
     },
     {
       "nome": "Patrick Nascimento",
-      "qtd": 262
+      "qtd": 261
     },
     {
       "nome": "Daniel Joaquim ",
@@ -192,15 +192,15 @@
     },
     {
       "dia": "Quarta",
-      "qtd": 405
+      "qtd": 397
     },
     {
       "dia": "Quinta",
-      "qtd": 565
+      "qtd": 564
     },
     {
       "dia": "Sexta",
-      "qtd": 375
+      "qtd": 374
     },
     {
       "dia": "Sábado",
@@ -234,7 +234,7 @@
     },
     {
       "organizacao": "IDEAL ESQUADRIAS DE ALUMINIO",
-      "qtd": 19
+      "qtd": 17
     },
     {
       "organizacao": "Faktory Softwares",
@@ -262,18 +262,18 @@
     }
   ],
   "urgencia_geral": {
-    "Alta": 1400,
-    "Baixa": 499,
-    "Média": 112
+    "Alta": 1396,
+    "Baixa": 498,
+    "Média": 111
   },
   "classificacao": [
     {
       "classe": "Empresa",
-      "qtd": 1533
+      "qtd": 1526
     },
     {
       "classe": "Empresa (CEMMOBI)",
-      "qtd": 56
+      "qtd": 55
     },
     {
       "classe": "Empresa (Onboarding)",
@@ -281,7 +281,7 @@
     },
     {
       "classe": "Atendimento CEM EXCLUSIVE",
-      "qtd": 50
+      "qtd": 49
     },
     {
       "classe": "Empresa (Cliente VIP)",
